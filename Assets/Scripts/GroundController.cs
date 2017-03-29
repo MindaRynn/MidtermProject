@@ -15,7 +15,7 @@ public class GroundController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (transform.position.y >= 20 ||(transform.position.y <= 5)) {
+		if (transform.position.y >= maxHight ||(transform.position.y <= minHight)) {
 			speed = speed * (-1);
 		}
 
