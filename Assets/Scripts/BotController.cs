@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class BotController : MonoBehaviour {
 
-	Animator anim;
+	private Animator anim;
+	public GameObject player;
 	bool boolper, boolper2, boolper3;
 	Rigidbody rb;
 	public float speed;
 	public int jumpCount;
 	public int maxBullet;
-	private int bulletCount;
-	private int bulletCoolDown;
-	private int bulletDelayCount;
+	private bool right;
+	private int walkTime;
 	private int bulletDelay;
+	private int radiusRange;
 	public GameObject bulletObj;
 
 	// Use this for initialization
@@ -21,10 +22,10 @@ public class PlayerController : MonoBehaviour {
 		anim = GetComponentInChildren<Animator>();
 		rb = gameObject.GetComponent<Rigidbody> ();
 		jumpCount = 2;
-		bulletCount = maxBullet;
-		bulletCoolDown = 0;
-		bulletDelay = 20;
-		bulletDelayCount = 0;
+		right = true;
+		walkTime = 0;
+		bulletDelay = 0;
+		radiusRange = 10;
 	}
 
 	public void Walk () {
@@ -87,56 +88,24 @@ public class PlayerController : MonoBehaviour {
 		anim.SetBool ("isDamage", true);
 	}
 
-	private void Shoot () {
-		if (bulletCount > 0 && bulletDelayCount <= 0) {
-			bulletCount--;
-			bulletDelayCount = bulletDelay;
-			if (IsFacingRight ()) {
-				BulletController bullet = Instantiate (bulletObj, new Vector3 (transform.position.x + 3f, transform.position.y + 1, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
-				bullet.direction = "Right";
-			}
-			else {
-				BulletController bullet = Instantiate (bulletObj, new Vector3 (transform.position.x - 3f, transform.position.y + 1, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
-				bullet.direction = "Left";
-			}
-			Debug.Log ("Bullet Left: " + bulletCount);
-		}
-		else {
-			Debug.Log ("Out of Bullet!!!");
-		}
-	}
-
 	public bool IsAnimating () {
 		return anim.GetBool ("isWalk") || anim.GetBool ("isRun") || anim.GetBool ("Attack") || anim.GetBool ("LowKick") || anim.GetBool ("isDeath") || anim.GetBool ("isDeath2") || anim.GetBool ("HitStrike");
 	}
 
-	private bool IsFacingRight () {
-		return transform.eulerAngles.y == 270;
-	}
-
-	private void BulletAdder () {
-		if (bulletCount < maxBullet) {
-			bulletCoolDown++;
+	private void Shoot ()
+	{
+		if (IsFacingRight ()) {
+			BulletController bullet = Instantiate (bulletObj, new Vector3 (transform.position.x + 3f, transform.position.y + 1, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
+			bullet.direction = "Right";
 		}
 		else {
-			bulletCoolDown = 0;
-		}
-
-		if (bulletCoolDown >= 60) {
-			bulletCount++;
-			bulletCoolDown = 0;
-			Debug.Log ("A Bullet Has been added. Bullet count = " + bulletCount);
-			if (bulletCount >= maxBullet) {
-				Debug.Log ("MAX BULLET! SHOOT TO BEGIN CHARGING!!!");
-			}
+			BulletController bullet = Instantiate (bulletObj, new Vector3 (transform.position.x - 3f, transform.position.y + 1, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
+			bullet.direction = "Left";
 		}
 	}
 
-	private void BulletDelay () {
-		bulletDelayCount--;
-		if (bulletDelayCount <= 0) {
-			bulletDelayCount = 0;
-		}
+	private bool IsFacingRight () {
+		return transform.eulerAngles.y == 270;
 	}
 
 	private void WalkRight () {
@@ -157,51 +126,51 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	// Update is called once per frame
-	void Update () { 
+	private void RandomWalkTime () {
+		walkTime = Random.Range (30, 180);
+	}
 
-		BulletAdder ();
-		BulletDelay ();
+	private void RandomWalkSide () {
+		right = !right;
+	}
 
-		// Shoot a bullet
-		if (Input.GetKeyDown (KeyCode.J)) {
-			Debug.Log ("Shoot");
-			Shoot ();
-		}
+	private bool IsPlayerInRangeX () {
+		return Mathf.Abs (transform.position.x - player.gameObject.transform.position.x) <= radiusRange;
+	}
 
-		// Low kick
-		else if (Input.GetKeyDown (KeyCode.K)) {
-			Debug.Log ("Attack");
-			LowKick ();
-		}
+	private bool IsPlayerInRangeY () {
+		return Mathf.Abs (transform.position.y - player.gameObject.transform.position.y) <= radiusRange;
+	}
 
-		// Attack
-		else if (Input.GetKeyDown (KeyCode.L)) {
-			Attack ();
-		}
-
-		// Jump
-		else if (Input.GetKeyDown (KeyCode.Space)) {
-			Debug.Log ("Space");
-			if (jumpCount > 0) {
-				rb.AddForce (Vector2.up * 250f);
-				jumpCount--;
+	void Update () {
+		if (IsPlayerInRangeX () && IsPlayerInRangeY ()) {
+			if (transform.position.x < player.gameObject.transform.position.x) {
+				WalkRight ();
+			}
+			else if (transform.position.x > player.gameObject.transform.position.x) {
+				WalkLeft ();
+			}
+			if (bulletDelay <= 0) {
+				Shoot ();
+				bulletDelay = 60;
+			}
+			else {
+				bulletDelay--;
 			}
 		}
-
-		// Run right
-		else if (Input.GetKey (KeyCode.D)) {
-			WalkRight ();
+		else {
+			if (walkTime <= 0) {
+				RandomWalkTime ();
+				RandomWalkSide ();
+			}
+			if (right) {
+				WalkRight ();
+			}
+			else {
+				WalkLeft ();
+			}
+			walkTime--;
 		}
-
-		// Run left
-		else if (Input.GetKey (KeyCode.A)) {
-			WalkLeft ();
-		}
-
-		// Idle
-		if (Input.GetKeyUp (KeyCode.D) || Input.GetKeyUp (KeyCode.A)) {
-			OtherIdle ();
-		}
+		Debug.Log (walkTime);
 	}
 }
