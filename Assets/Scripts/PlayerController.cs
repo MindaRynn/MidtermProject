@@ -92,11 +92,11 @@ public class PlayerController : MonoBehaviour {
 			bulletCount--;
 			bulletDelayCount = bulletDelay;
 			if (IsFacingRight ()) {
-				BulletController bullet = Instantiate (bulletObj, new Vector3 (transform.position.x + 3f, transform.position.y + 1, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
+				BulletController bullet = Instantiate (bulletObj, new Vector3 (transform.position.x + 1f, transform.position.y + 1, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
 				bullet.direction = "Right";
 			}
 			else {
-				BulletController bullet = Instantiate (bulletObj, new Vector3 (transform.position.x - 3f, transform.position.y + 1, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
+				BulletController bullet = Instantiate (bulletObj, new Vector3 (transform.position.x - 1f, transform.position.y + 1, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
 				bullet.direction = "Left";
 			}
 			Debug.Log ("Bullet Left: " + bulletCount);
@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour {
 	private void WalkRight () {
 		Vector3 movementPos = new Vector3 (transform.position.x + 1, transform.position.y, transform.position.z);
 		transform.position = Vector3.MoveTowards (transform.position, movementPos, speed * Time.deltaTime);
-		transform.eulerAngles = new Vector3 (transform.eulerAngles.x, 270, transform.eulerAngles.z);
+		transform.eulerAngles = new Vector3 (transform.eulerAngles.x, -100, transform.eulerAngles.z);
 		if (!IsAnimating ()) {
 			Run ();
 		}
@@ -151,7 +151,7 @@ public class PlayerController : MonoBehaviour {
 	private void WalkLeft () {
 		Vector3 movementPos = new Vector3 (transform.position.x - 1, transform.position.y, transform.position.z);
 		transform.position = Vector3.MoveTowards (transform.position, movementPos, speed * Time.deltaTime);
-		transform.eulerAngles = new Vector3 (transform.eulerAngles.x, 40, transform.eulerAngles.z);
+		transform.eulerAngles = new Vector3 (transform.eulerAngles.x, 50, transform.eulerAngles.z);
 		if (!IsAnimating ()) {
 			Run ();
 		}
@@ -184,7 +184,7 @@ public class PlayerController : MonoBehaviour {
 		else if (Input.GetKeyDown (KeyCode.Space)) {
 			Debug.Log ("Space");
 			if (jumpCount > 0) {
-				rb.AddForce (Vector2.up * 250f);
+				rb.AddForce (Vector2.up * 300f);
 				jumpCount--;
 			}
 		}
