@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+<<<<<<< 526998afc4c573eaf9669a47f3378dcbb761b37e
+=======
+//[System.Serializable]
+//public class Boundary
+//{
+//	public float xMin, xMax, zMin, zMax;
+//}
+
+>>>>>>> Rename PlayerController to HackerController
 public class PlayerController : MonoBehaviour {
 
 	Animator anim;
