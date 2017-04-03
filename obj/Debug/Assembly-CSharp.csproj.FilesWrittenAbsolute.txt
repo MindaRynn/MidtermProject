@@ -40,3 +40,5 @@
 /Users/winvaris/Desktop/Senior Project/MidtermProject/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/winvaris/Desktop/Senior Project/MidtermProject/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Users/winvaris/Desktop/Senior Project/MidtermProject/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/winvaris/Desktop/Senior Project/MidtermProject/Temp/bin/Debug/UnityEngine.Advertisements.dll
+/Users/winvaris/Desktop/Senior Project/MidtermProject/Temp/bin/Debug/UnityEngine.Purchasing.dll

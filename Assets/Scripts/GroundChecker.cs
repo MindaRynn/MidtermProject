@@ -12,9 +12,9 @@ public class GroundChecker : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision obj) {
+		Debug.Log (obj.gameObject.tag);
 		if (obj.gameObject.tag == "Ground") {
 			player.jumpCount = 2;
 		}
-		Debug.Log (obj.gameObject.tag);
 	}
 }
