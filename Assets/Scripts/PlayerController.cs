@@ -206,7 +206,7 @@ public class PlayerController : MonoBehaviour {
 
 	void OnCollisionEnter (Collision obj) {
 		Debug.Log (obj.gameObject.tag);
-		if (obj.gameObject.tag == "Ground" || obj.gameObject.tag == "Lift") {
+		if (obj.gameObject.tag == "Ground" || obj.gameObject.tag == "Lift" || obj.gameObject.tag == "Bot") {
 			jumpCount = 2;
 		}
 	}

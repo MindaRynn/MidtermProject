@@ -21,7 +21,7 @@ public class HealthController : MonoBehaviour {
 	}
 
 	private void UpdateHP () {
-		hpText.text = hp.ToString ();
+//		hpText.text = hp.ToString ();
 	}
 
 	public void Heal (int healPoint) {

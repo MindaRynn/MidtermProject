@@ -95,11 +95,11 @@ public class BotController : MonoBehaviour {
 	private void Shoot ()
 	{
 		if (IsFacingRight ()) {
-			BulletController bullet = Instantiate (bulletObj, new Vector3 (transform.position.x + 3f, transform.position.y + 1, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
+			BulletController bullet = Instantiate (bulletObj, new Vector3 (transform.position.x + 1f, transform.position.y + 1, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
 			bullet.direction = "Right";
 		}
 		else {
-			BulletController bullet = Instantiate (bulletObj, new Vector3 (transform.position.x - 3f, transform.position.y + 1, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
+			BulletController bullet = Instantiate (bulletObj, new Vector3 (transform.position.x - 1f, transform.position.y + 1, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
 			bullet.direction = "Left";
 		}
 	}
