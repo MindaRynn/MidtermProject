@@ -31,6 +31,10 @@ public class BulletController : MonoBehaviour {
 		Debug.Log (obj.gameObject.name);
 		if (obj.gameObject.tag == "Player" || obj.gameObject.tag == "Bot") {
 			obj.gameObject.GetComponentInParent<HealthController> ().Damage (10);
+			if (obj.gameObject.GetComponentInParent<HealthController> ().GetHP () <= 0) {
+				Destroy (obj.gameObject);
+			}
+			Debug.Log (obj.gameObject.GetComponentInParent<HealthController> ().GetHP ());
 		}
 		Destroy (this.gameObject);
 	}

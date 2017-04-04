@@ -171,6 +171,6 @@ public class BotController : MonoBehaviour {
 			}
 			walkTime--;
 		}
-		Debug.Log (walkTime);
+//		Debug.Log (walkTime);
 	}
 }

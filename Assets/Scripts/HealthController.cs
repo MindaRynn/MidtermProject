@@ -15,9 +15,7 @@ public class HealthController : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.H)) {
-			Heal (5);
-		}
+		
 	}
 
 	private void UpdateHP () {
