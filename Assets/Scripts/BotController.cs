@@ -105,13 +105,13 @@ public class BotController : MonoBehaviour {
 	}
 
 	private bool IsFacingRight () {
-		return transform.eulerAngles.y == 270;
+		return transform.eulerAngles.y == 250;
 	}
 
 	private void WalkRight () {
 		Vector3 movementPos = new Vector3 (transform.position.x + 1, transform.position.y, transform.position.z);
 		transform.position = Vector3.MoveTowards (transform.position, movementPos, speed * Time.deltaTime);
-		transform.eulerAngles = new Vector3 (transform.eulerAngles.x, 270, transform.eulerAngles.z);
+		transform.eulerAngles = new Vector3 (transform.eulerAngles.x, 250, transform.eulerAngles.z);
 		if (!IsAnimating ()) {
 			Run ();
 		}
@@ -120,7 +120,7 @@ public class BotController : MonoBehaviour {
 	private void WalkLeft () {
 		Vector3 movementPos = new Vector3 (transform.position.x - 1, transform.position.y, transform.position.z);
 		transform.position = Vector3.MoveTowards (transform.position, movementPos, speed * Time.deltaTime);
-		transform.eulerAngles = new Vector3 (transform.eulerAngles.x, 40, transform.eulerAngles.z);
+		transform.eulerAngles = new Vector3 (transform.eulerAngles.x, 50, transform.eulerAngles.z);
 		if (!IsAnimating ()) {
 			Run ();
 		}
