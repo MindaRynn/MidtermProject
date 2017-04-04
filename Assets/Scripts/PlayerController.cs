@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private bool IsFacingRight () {
-		return transform.eulerAngles.y == 270;
+		return transform.eulerAngles.y == 250;
 	}
 
 	private void BulletAdder () {
@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour {
 	private void WalkRight () {
 		Vector3 movementPos = new Vector3 (transform.position.x + 1, transform.position.y, transform.position.z);
 		transform.position = Vector3.MoveTowards (transform.position, movementPos, speed * Time.deltaTime);
-		transform.eulerAngles = new Vector3 (transform.eulerAngles.x, -100, transform.eulerAngles.z);
+		transform.eulerAngles = new Vector3 (transform.eulerAngles.x, 250, transform.eulerAngles.z);
 		if (!IsAnimating ()) {
 			Run ();
 		}
@@ -183,7 +183,7 @@ public class PlayerController : MonoBehaviour {
 		else if (Input.GetKeyDown (KeyCode.Space)) {
 			Debug.Log ("Space");
 			if (jumpCount > 0) {
-				rb.AddForce (Vector2.up * 300f);
+				rb.AddForce (Vector2.up * 350f);
 				jumpCount--;
 			}
 		}
@@ -201,6 +201,13 @@ public class PlayerController : MonoBehaviour {
 		// Idle
 		if (Input.GetKeyUp (KeyCode.D) || Input.GetKeyUp (KeyCode.A)) {
 			OtherIdle ();
+		}
+	}
+
+	void OnCollisionEnter (Collision obj) {
+		Debug.Log (obj.gameObject.tag);
+		if (obj.gameObject.tag == "Ground" || obj.gameObject.tag == "Lift") {
+			jumpCount = 2;
 		}
 	}
 }
