@@ -16,6 +16,7 @@ public class BotController : MonoBehaviour {
 	private int bulletDelay;
 	private int radiusRange;
 	public GameObject bulletObj;
+	public GameObject hpBar;
 
 	// Use this for initialization
 	void Awake () {
@@ -109,18 +110,18 @@ public class BotController : MonoBehaviour {
 	}
 
 	private void WalkRight () {
-		Vector3 movementPos = new Vector3 (transform.position.x + 1, transform.position.y, transform.position.z);
-		transform.position = Vector3.MoveTowards (transform.position, movementPos, speed * Time.deltaTime);
-		transform.eulerAngles = new Vector3 (transform.eulerAngles.x, 250, transform.eulerAngles.z);
-		if (!IsAnimating ()) {
-			Run ();
-		}
+		WalkChecker (1, 250);
 	}
 
 	private void WalkLeft () {
-		Vector3 movementPos = new Vector3 (transform.position.x - 1, transform.position.y, transform.position.z);
+		WalkChecker (-1, 50);
+	}
+
+	private void WalkChecker (float xPos, float yRotate) {
+		Vector3 movementPos = new Vector3 (transform.position.x + xPos, transform.position.y, transform.position.z);
 		transform.position = Vector3.MoveTowards (transform.position, movementPos, speed * Time.deltaTime);
-		transform.eulerAngles = new Vector3 (transform.eulerAngles.x, 50, transform.eulerAngles.z);
+		transform.eulerAngles = new Vector3 (transform.eulerAngles.x, yRotate, transform.eulerAngles.z);
+		hpBar.transform.rotation = Quaternion.identity;
 		if (!IsAnimating ()) {
 			Run ();
 		}

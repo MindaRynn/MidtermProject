@@ -7,11 +7,13 @@ public class HealthController : MonoBehaviour {
 
 	private int hp;
 	public int maxHP;
+	public Image hpBar;
 	public Text hpText;
 
 	// Use this for initialization
 	void Awake () {
 		hp = maxHP;
+		UpdateHP ();
 	}
 
 	void Update () {
@@ -19,7 +21,8 @@ public class HealthController : MonoBehaviour {
 	}
 
 	private void UpdateHP () {
-//		hpText.text = hp.ToString ();
+		hpBar.transform.localScale = new Vector3 ((hp + 0f) / maxHP, 1, 1);
+		hpText.text = hp + "/" + maxHP;
 	}
 
 	public void Heal (int healPoint) {
