@@ -7,6 +7,8 @@ public class BoxController : MonoBehaviour {
 	public GameObject noticeSign;
 	public GameObject arrow;
 
+	public int x;
+
 	void Start() {
 		isOpened = false;
 		canOpen = false;
