@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
 	public bool canMove;
 	public bool dialogRunning;
 	public GameObject bulletObj;
+	public GameObject noticeSign;
 
 	// Use this for initialization
 	void Awake () {
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour {
 		bulletCoolDown = 0;
 		bulletDelay = 20;
 		bulletDelayCount = 0;
+		noticeSign.GetComponent<Renderer>().enabled = false;
 	}
 
 	public void Walk () {
