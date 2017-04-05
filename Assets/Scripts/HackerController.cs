@@ -10,6 +10,7 @@ public class HackerController : MonoBehaviour {
 	public float speed;
 	public float fireRate;
 	private float nextFire;
+	public GameObject explosion;
 
 	//	public Boundary boundary;
 	public Vector3 up = new Vector3(0,1.0f,0);
@@ -26,16 +27,20 @@ public class HackerController : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other){
 		if (other.tag == "eShot") {
-			GetComponent<Renderer>().material.color = new Color(0.03F,0.03F, 0.03F, 1.0F);
+			Destroy (other.gameObject);
+			Destroy (gameObject);
+			Instantiate (explosion, transform.position, transform.rotation);
 		}
 	}
 
-	void OnTriggerExit (Collider other){
-		if (other.tag == "eShot") {
-			GetComponent<Renderer>().material.color = new Color(1.0F,1.0F, 1.0F, 1.0F);
-			Destroy (other.gameObject);
-		}
-	}
+//	void OnTriggerExit (Collider other){
+//		if (other.tag == "eShot") {
+//			GetComponent<Renderer>().material.color = new Color(1.0F,1.0F, 1.0F, 1.0F);
+//			Destroy (other.gameObject);
+//			Destroy (gameObject);
+//			Instantiate (explosion, transform.position, transform.rotation);
+//		}
+//	}
 
 	void Update () {
 		transform.rotation = Quaternion.Euler(lockPos, transform.rotation.eulerAngles.y, lockPos);

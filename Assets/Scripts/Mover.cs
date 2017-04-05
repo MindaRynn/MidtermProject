@@ -12,4 +12,10 @@ public class Mover : MonoBehaviour {
 		GetComponent<Rigidbody> ().velocity = transform.forward * speed;
 	}
 
+	void OnTriggerExit(Collider other) {
+		if (other.tag == "Bolt") {
+			Destroy (other.gameObject);
+		}
+	}
+
 }

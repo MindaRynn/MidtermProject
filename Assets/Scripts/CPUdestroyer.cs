@@ -7,6 +7,7 @@ public class CPUdestroyer : MonoBehaviour {
 	public GameObject cpuBox;
 	public GameObject cpu;
 	public GameObject explosion;
+	public GameObject UI;
 	public AudioClip shooted, explosionSound;
 	private int count;
 	// Use this for initialization
