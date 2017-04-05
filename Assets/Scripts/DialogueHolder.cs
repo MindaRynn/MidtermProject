@@ -25,7 +25,7 @@ public class DialogueHolder : MonoBehaviour {
 
 	}
 
-	void OnTriggerEnter2D (Collider2D other) {
+	void OnCollisionEnter (Collision other) {
 		if (other.gameObject.name == "Player") {
 			//dialogueManager.ShowBox (dialogue);
 

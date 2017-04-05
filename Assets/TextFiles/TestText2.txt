@@ -1,0 +1,8 @@
+Varis: Alibaba
+Mind: Alabibi
+Varis: Alibaba2
+Mind: Alabibi2
+Varis: Alibaba3
+Mind: Alabibi3
+Varis: Alibaba4
+Mind: Alabibi4
