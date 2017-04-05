@@ -163,49 +163,55 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () { 
 
-		BulletAdder ();
-		BulletDelay ();
+		if (canMove) {
 
-		// Shoot a bullet
-		if (Input.GetKeyDown (KeyCode.J)) {
-			Debug.Log ("Shoot");
-			Shoot ();
-		}
+			BulletAdder ();
+			BulletDelay ();
+
+			// Shoot a bullet
+			if (Input.GetKeyDown (KeyCode.J)) {
+				Debug.Log ("Shoot");
+				Shoot ();
+			}
 
 		// Low kick
 		else if (Input.GetKeyDown (KeyCode.K)) {
-			Debug.Log ("Attack");
-			LowKick ();
-		}
+				Debug.Log ("Attack");
+				LowKick ();
+			}
 
 		// Attack
 		else if (Input.GetKeyDown (KeyCode.L)) {
-			Attack ();
-		}
+				Attack ();
+			}
 
 		// Jump
 		else if (Input.GetKeyDown (KeyCode.Space)) {
-			Debug.Log ("Space");
-			if (jumpCount > 0) {
-				rb.AddForce (Vector2.up * 350f);
-				jumpCount--;
+				Debug.Log ("Space");
+				if (jumpCount > 0) {
+					rb.AddForce (Vector2.up * 350f);
+					jumpCount--;
+				}
 			}
-		}
 
 		// Run right
 		else if (Input.GetKey (KeyCode.D)) {
-			WalkRight ();
-		}
+				WalkRight ();
+			}
 
 		// Run left
 		else if (Input.GetKey (KeyCode.A)) {
-			WalkLeft ();
-		}
+				WalkLeft ();
+			}
 
-		// Idle
-		if (Input.GetKeyUp (KeyCode.D) || Input.GetKeyUp (KeyCode.A)) {
-			OtherIdle ();
+			// Idle
+			if (Input.GetKeyUp (KeyCode.D) || Input.GetKeyUp (KeyCode.A)) {
+				OtherIdle ();
+			}
 		}
+		else {
+			OtherIdle ();
+		}	
 	}
 
 	void OnCollisionEnter (Collision obj) {
