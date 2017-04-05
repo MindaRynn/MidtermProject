@@ -36,6 +36,7 @@ public class CPUdestroyer : MonoBehaviour {
 		if (count >= 20) {
 			Instantiate (explosion, transform.position, transform.rotation);
 			Destroy (cpuBox.gameObject);
+			Application.LoadLevel (0);
 			Destroy (gameObject);
 		}
 	}
