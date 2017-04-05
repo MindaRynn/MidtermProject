@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour {
 	private int bulletCoolDown;
 	private int bulletDelayCount;
 	private int bulletDelay;
+	public bool canMove;
+	public bool dialogRunning;
 	public GameObject bulletObj;
 
 	// Use this for initialization
