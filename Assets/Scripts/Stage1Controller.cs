@@ -6,11 +6,15 @@ public class Stage1Controller : MonoBehaviour {
 
 	public GameObject zombiePrefab;
 	private Vector3[] zombiesPos;
+	private GameObject[] zombies;
+	public int zombieRespawnDelay;
+	private int respawnCount;
 
 	// Use this for initialization
 	void Awake () {
 		InitializeZombiesPos ();
 		InstantiateZombies ();
+		respawnCount = 0;
 	}
 
 	private void InitializeZombiesPos () {
@@ -21,17 +25,24 @@ public class Stage1Controller : MonoBehaviour {
 		zombiesPos[2] = new Vector3 (70, 1, 0);
 		zombiesPos[3] = new Vector3 (90, 1, 0);
 		zombiesPos[4] = new Vector3 (110, 1, 0);
+		zombies = new GameObject[zombiesPos.Length];
 	}
 
 	private void InstantiateZombies () {
 		Debug.Log ("InstantiateZombies");
 		for (int i = 0; i < zombiesPos.Length; i++) {
-			Instantiate (zombiePrefab, zombiesPos [i], Quaternion.identity);
+			if (zombies [i] == null) {
+				zombies [i] = Instantiate (zombiePrefab, zombiesPos [i], Quaternion.identity);
+			}
 		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		respawnCount++;
+		if (respawnCount >= zombieRespawnDelay) {
+			InstantiateZombies ();
+			respawnCount = 0;
+		}
 	}
 }
