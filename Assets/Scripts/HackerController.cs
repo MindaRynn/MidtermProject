@@ -33,15 +33,6 @@ public class HackerController : MonoBehaviour {
 		}
 	}
 
-//	void OnTriggerExit (Collider other){
-//		if (other.tag == "eShot") {
-//			GetComponent<Renderer>().material.color = new Color(1.0F,1.0F, 1.0F, 1.0F);
-//			Destroy (other.gameObject);
-//			Destroy (gameObject);
-//			Instantiate (explosion, transform.position, transform.rotation);
-//		}
-//	}
-
 	void Update () {
 		transform.rotation = Quaternion.Euler(lockPos, transform.rotation.eulerAngles.y, lockPos);
 		if (Time.time > nextFire)

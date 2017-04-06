@@ -6,12 +6,16 @@ public class BoxController : MonoBehaviour {
 	bool isOpened, canOpen;
 	public GameObject noticeSign;
 	public GameObject arrow;
+	public GameObject player;
+	public GameObject pickUp;
+	AudioSource sound;
 
 	public int x;
 
 	void Start() {
 		isOpened = false;
 		canOpen = false;
+		sound = pickUp.GetComponent<AudioSource> ();
 	}
 	void OnTriggerEnter (Collider other){
 		if (other.tag == "Player" && !isOpened ) {
@@ -32,6 +36,8 @@ public class BoxController : MonoBehaviour {
 				Debug.Log ("Opening Box");
 				isOpened = true;
 				arrow.GetComponent<Renderer>().enabled = false;
+				sound.Play ();
+				player.gameObject.GetComponentInParent<HealthController> ().Heal (20);
 			}
 		}
 	}

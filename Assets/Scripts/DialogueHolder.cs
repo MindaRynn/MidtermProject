@@ -28,7 +28,6 @@ public class DialogueHolder : MonoBehaviour {
 	void OnCollisionEnter (Collision other) {
 		if (other.gameObject.name == "Player") {
 			//dialogueManager.ShowBox (dialogue);
-
 			if (!dialogueManager.isActive) {
 				dialogueManager.dialogueLines = dialogueLines;
 				dialogueManager.currentLine = 0;
