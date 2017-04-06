@@ -17,17 +17,21 @@ public class PlayerController : MonoBehaviour {
 	public bool dialogRunning;
 	public GameObject bulletObj;
 	public GameObject noticeSign;
+	public GameObject faderObj;
+	private Fader fader;
 
 	// Use this for initialization
 	void Awake () {
-		anim = GetComponentInChildren<Animator>();
+		anim = GetComponentInChildren<Animator> ();
 		rb = gameObject.GetComponent<Rigidbody> ();
 		jumpCount = 2;
 		bulletCount = maxBullet;
 		bulletCoolDown = 0;
 		bulletDelay = 20;
 		bulletDelayCount = 0;
-		noticeSign.GetComponent<Renderer>().enabled = false;
+		noticeSign.GetComponent<Renderer> ().enabled = false;
+		fader = faderObj.GetComponent<Fader> ();
+		fader.gameObject.SetActive (true);
 	}
 
 	public void Walk () {
@@ -146,18 +150,18 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void WalkRight () {
-		Vector3 movementPos = new Vector3 (transform.position.x + 1, transform.position.y, transform.position.z);
-		transform.position = Vector3.MoveTowards (transform.position, movementPos, speed * Time.deltaTime);
-		transform.eulerAngles = new Vector3 (transform.eulerAngles.x, 250, transform.eulerAngles.z);
-		if (!IsAnimating ()) {
-			Run ();
-		}
+		WalkChecker (1, 250);
 	}
 
 	private void WalkLeft () {
-		Vector3 movementPos = new Vector3 (transform.position.x - 1, transform.position.y, transform.position.z);
+		WalkChecker (-1, 50);
+	}
+
+	private void WalkChecker (float xPos, float yRotate) {
+		Vector3 movementPos = new Vector3 (transform.position.x + xPos, transform.position.y, transform.position.z);
 		transform.position = Vector3.MoveTowards (transform.position, movementPos, speed * Time.deltaTime);
-		transform.eulerAngles = new Vector3 (transform.eulerAngles.x, 50, transform.eulerAngles.z);
+		transform.eulerAngles = new Vector3 (transform.eulerAngles.x, yRotate, transform.eulerAngles.z);
+		noticeSign.transform.rotation = Quaternion.identity;
 		if (!IsAnimating ()) {
 			Run ();
 		}
@@ -177,19 +181,19 @@ public class PlayerController : MonoBehaviour {
 				Shoot ();
 			}
 
-		// Low kick
-		else if (Input.GetKeyDown (KeyCode.K)) {
+			// Low kick
+			else if (Input.GetKeyDown (KeyCode.K)) {
 				Debug.Log ("Attack");
 				LowKick ();
 			}
 
-		// Attack
-		else if (Input.GetKeyDown (KeyCode.L)) {
+			// Attack
+			else if (Input.GetKeyDown (KeyCode.L)) {
 				Attack ();
 			}
 
-		// Jump
-		else if (Input.GetKeyDown (KeyCode.Space)) {
+			// Jump
+			else if (Input.GetKeyDown (KeyCode.Space)) {
 				Debug.Log ("Space");
 				if (jumpCount > 0) {
 					rb.AddForce (Vector2.up * 350f);
@@ -197,14 +201,23 @@ public class PlayerController : MonoBehaviour {
 				}
 			}
 
-		// Run right
-		else if (Input.GetKey (KeyCode.D)) {
+			// Run right
+			else if (Input.GetKey (KeyCode.D)) {
 				WalkRight ();
 			}
 
-		// Run left
-		else if (Input.GetKey (KeyCode.A)) {
+			// Run left
+			else if (Input.GetKey (KeyCode.A)) {
 				WalkLeft ();
+			}
+
+			else if (Input.GetKeyDown (KeyCode.I)) {
+				fader.gameObject.SetActive (true);
+				fader.FadeIn ();
+			}
+			else if (Input.GetKeyDown (KeyCode.O)) {
+				fader.gameObject.SetActive (true);
+				fader.FadeOut ();
 			}
 
 			// Idle
