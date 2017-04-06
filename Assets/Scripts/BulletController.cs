@@ -28,13 +28,21 @@ public class BulletController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider obj) {
-		Debug.Log (obj.gameObject.name);
-		if (obj.gameObject.tag == "Player" || obj.gameObject.tag == "Bot") {
-			obj.gameObject.GetComponentInParent<HealthController> ().Damage (10);
-			if (obj.gameObject.GetComponentInParent<HealthController> ().GetHP () <= 0) {
-				Destroy (obj.gameObject);
+		if (shooter == "Player") {
+			if (obj.gameObject.tag == "Bot") {
+				obj.gameObject.GetComponentInParent<HealthController> ().Damage (10);
+				if (obj.gameObject.GetComponentInParent<HealthController> ().GetHP () <= 0) {
+					Destroy (obj.gameObject);
+				}
 			}
-			Debug.Log (obj.gameObject.GetComponentInParent<HealthController> ().GetHP ());
+		}
+		else if (shooter == "Bot") {
+			if (obj.gameObject.tag == "Player") {
+				obj.gameObject.GetComponentInParent<HealthController> ().Damage (10);
+				if (obj.gameObject.GetComponentInParent<HealthController> ().GetHP () <= 0) {
+					Destroy (obj.gameObject);
+				}
+			}
 		}
 		Destroy (this.gameObject);
 	}
