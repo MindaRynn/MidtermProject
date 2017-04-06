@@ -15,6 +15,7 @@ public class BotController : MonoBehaviour {
 	private int walkTime;
 	private int bulletDelay;
 	private int radiusRange;
+	private int jumpTime;
 	public GameObject bulletObj;
 	public GameObject hpBar;
 
@@ -27,6 +28,7 @@ public class BotController : MonoBehaviour {
 		walkTime = 0;
 		bulletDelay = 0;
 		radiusRange = 10;
+		jumpTime = 0;
 	}
 
 	public void Walk () {
@@ -129,8 +131,8 @@ public class BotController : MonoBehaviour {
 		}
 	}
 
-	private void RandomWalkTime () {
-		walkTime = Random.Range (30, 180);
+	private int RandomTime (int min, int max) {
+		return Random.Range (min, max);
 	}
 
 	private void RandomWalkSide () {
@@ -160,10 +162,15 @@ public class BotController : MonoBehaviour {
 			else {
 				bulletDelay--;
 			}
+			if (jumpTime <= 0) {
+				rb.AddForce (Vector2.up * 300f);
+				jumpTime = RandomTime (60, 120);
+			}
+			jumpTime--;
 		}
 		else {
 			if (walkTime <= 0) {
-				RandomWalkTime ();
+				walkTime = RandomTime (40, 180);
 				RandomWalkSide ();
 			}
 			if (right) {
