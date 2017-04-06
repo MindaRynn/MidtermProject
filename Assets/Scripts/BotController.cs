@@ -5,7 +5,7 @@ using UnityEngine;
 public class BotController : MonoBehaviour {
 
 	private Animator anim;
-	public GameObject player;
+	private GameObject player;
 	bool boolper, boolper2, boolper3;
 	Rigidbody rb;
 	public float speed;
@@ -22,6 +22,7 @@ public class BotController : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		anim = GetComponentInChildren<Animator>();
+		player = GameObject.Find ("Player").gameObject;
 		rb = gameObject.GetComponent<Rigidbody> ();
 		jumpCount = 2;
 		right = true;

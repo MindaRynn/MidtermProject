@@ -70,6 +70,7 @@
      <Compile Include="Assets\Scripts\PowerDestroyed.cs" />
      <Compile Include="Assets\Scripts\RandomRotator.cs" />
      <Compile Include="Assets\Scripts\Rotator.cs" />
+     <Compile Include="Assets\Scripts\Stage1Controller.cs" />
      <Compile Include="Assets\Scripts\WhiteBoxController.cs" />
      <None Include="Assets\TextFiles\TestText.txt" />
      <None Include="Assets\TextFiles\TestText2.txt" />
