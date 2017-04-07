@@ -6,14 +6,15 @@ public class DataBoxController : MonoBehaviour {
 	bool isOpened, canOpen;
 	public GameObject noticeSign;
 	public GameObject arrow;
-	public GameObject player;
 	public GameObject pickUp;
 	AudioSource sound;
+	private GameObject player;
 
-	void Start() {
+	void Awake() {
 		isOpened = false;
 		canOpen = false;
 		sound = pickUp.GetComponent<AudioSource> ();
+		player = GameObject.Find ("Player").gameObject;
 	}
 	void OnTriggerEnter (Collider other){
 		if (other.tag == "Player" && !isOpened ) {
@@ -33,6 +34,7 @@ public class DataBoxController : MonoBehaviour {
 			if (!isOpened && canOpen) {
 				isOpened = true;
 				arrow.GetComponent<Renderer>().enabled = false;
+				PlayerPrefs.SetString ("PlayerPos", player.transform.position.x + "," + player.transform.position.y);
 				Application.LoadLevel (1);
 			}
 		}

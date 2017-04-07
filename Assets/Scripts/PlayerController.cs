@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
 	Animator anim;
+	private HealthController health;
 	bool boolper, boolper2, boolper3;
 	Rigidbody rb;
 	public float speed;
@@ -19,10 +20,12 @@ public class PlayerController : MonoBehaviour {
 	public GameObject noticeSign;
 	public GameObject faderObj;
 	private Fader fader;
+	private Vector3 pos;
 
 	// Use this for initialization
 	void Awake () {
 		anim = GetComponentInChildren<Animator> ();
+		health = GetComponentInChildren<HealthController> ();
 		rb = gameObject.GetComponent<Rigidbody> ();
 		jumpCount = 2;
 		bulletCount = maxBullet;
@@ -33,6 +36,15 @@ public class PlayerController : MonoBehaviour {
 		fader = faderObj.GetComponent<Fader> ();
 		fader.gameObject.SetActive (true);
 		DontDestroyOnLoad (this.transform);
+		if (PlayerPrefs.GetString ("PlayerPos") == "" || PlayerPrefs.GetString ("PlayerPos") == null) {
+			pos = new Vector3 (0f, 0.7f, 0f);
+			transform.position = pos;
+		}
+		else {
+			string[] posStr = PlayerPrefs.GetString ("PlayerPos").Split (',');
+			pos = new Vector3 (float.Parse (posStr [0]), float.Parse (posStr [1]), 0f);
+		}
+		transform.position = pos;
 	}
 
 	public void Walk () {
@@ -169,7 +181,13 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () { 
+	void Update () {
+
+		if (health.HasDied ()) {
+			PlayerPrefs.DeleteKey ("PlayerPos");
+			fader.gameObject.SetActive (true);
+			fader.FadeOutAndLoad ("GameOver");
+		}
 
 		if (canMove) {
 
@@ -200,6 +218,9 @@ public class PlayerController : MonoBehaviour {
 					rb.AddForce (Vector2.up * 350f);
 					jumpCount--;
 				}
+			}
+			else if (Input.GetKeyDown (KeyCode.H)) {
+				PlayerPrefs.DeleteKey ("PlayerPos");
 			}
 
 			// Run right

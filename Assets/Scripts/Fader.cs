@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Fader : MonoBehaviour {
 
@@ -9,6 +10,8 @@ public class Fader : MonoBehaviour {
 	private float totalTime;
 	private bool fadeIn;
 	private bool fadeOut;
+	private bool loadScene;
+	private string sceneName;
 	public int fadeSpeed;
 	private Vector3 moveTo;
 	private GameObject player;
@@ -19,7 +22,10 @@ public class Fader : MonoBehaviour {
 		totalTime = 0f;
 		fadeIn = true;
 		fadeOut = false;
-		player = GameObject.Find ("Player").gameObject;
+		loadScene = false;
+		if (GameObject.Find ("Player") != null) {
+			player = GameObject.Find ("Player").gameObject;
+		}
 	}
 	
 	// Update is called once per frame
@@ -30,6 +36,9 @@ public class Fader : MonoBehaviour {
 			}
 			else if (!fadeIn && fadeOut) {
 				FadeOutUpdate ();
+				if (alpha >= 1f && loadScene) {
+					SceneManager.LoadScene (sceneName);
+				}
 			}
 			else if (fadeIn && fadeOut) {
 				FadeOutUpdate ();
@@ -78,5 +87,11 @@ public class Fader : MonoBehaviour {
 		fadeOut = true;
 		alpha = 0f;
 		moveTo = pos;
+	}
+
+	public void FadeOutAndLoad (string sceneName) {
+		this.sceneName = sceneName;
+		loadScene = true;
+		FadeOut ();
 	}
 }
