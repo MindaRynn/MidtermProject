@@ -1,14 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MiniGame2Controller : MonoBehaviour {
 	public GameObject whiteBox,blackBox;
 	private int cpuNum;
 	public GameObject hacker;
+	public GameObject faderObj;
+	private Fader fader;
+	private bool hasFaded;
 	// Use this for initialization
-	void Start () {
+
+	void Awake () {
+		fader = faderObj.GetComponent<Fader> ();
+		fader.gameObject.SetActive (true);
 		cpuNum = 1;
+		hasFaded = false;
 		string[] maze = new string[10];
 		maze [0] = "ooo##ooooo#oooo#o#oooo#oo#oo#o#oo#ooo#ooooo##oo#oooo#oo#o#oo";
 		maze [1] = "ooo##ooooo#oo#o##ooooo##o#oo#ooooo#oo#oo#o##oooo#o##o##oo##o";
@@ -37,11 +46,22 @@ public class MiniGame2Controller : MonoBehaviour {
 		}
 	}
 
+	void StageCompleted () {
+		PlayerPrefs.SetInt ("data"+PlayerPrefs.GetInt("numHacking"), 1);
+		PlayerPrefs.SetInt ("numHacking", 0);
+		fader.gameObject.SetActive (true);
+		fader.FadeOutAndLoad ("MainStage1");
+	}
+
 	void Update(){
-		if (hacker.gameObject.GetComponentInParent<HackerCounter>().getCpuDestroyed() >= cpuNum) {
-			PlayerPrefs.SetInt ("data"+PlayerPrefs.GetInt("numHacking"), 1);
-			PlayerPrefs.SetInt ("numHacking", 0);
-			Application.LoadLevel (1);
+		if (Input.GetKeyDown (KeyCode.T)) {
+			StageCompleted ();
+		}
+		if (hacker.gameObject.GetComponentInParent<HackerCounter>().getCpuDestroyed() >= cpuNum && !hasFaded) {
+			Debug.Log (hasFaded);
+			hasFaded = true;
+			Debug.Log (hasFaded);
+			StageCompleted ();
 		}
 	}
 }

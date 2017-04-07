@@ -11,11 +11,17 @@ public class HackerController : MonoBehaviour {
 	public float fireRate;
 	private float nextFire;
 	public GameObject explosion;
+	public GameObject faderObj;
+	private Fader fader;
 
 	//	public Boundary boundary;
 	public Vector3 up = new Vector3(0,1.0f,0);
 	public Vector3 down = new Vector3(0,-1.0f,0);
 	float lockPos = 0;
+
+	void Awake () {
+		fader = faderObj.GetComponent<Fader> ();
+	}
 
 	void FixedUpdate () {
 		float moveHorizontal = Input.GetAxis ("Horizontal");
@@ -32,7 +38,9 @@ public class HackerController : MonoBehaviour {
 			Instantiate (explosion, transform.position, transform.rotation);
 			PlayerPrefs.SetInt ("data"+PlayerPrefs.GetInt("numHacking"), 0);
 			PlayerPrefs.SetInt ("numHacking", 0);
-			Application.LoadLevel (1);
+			fader.gameObject.SetActive (true);
+			fader.FadeOutAndLoad ("MainStage1");
+//			Application.LoadLevel (1);
 		}
 	}
 
