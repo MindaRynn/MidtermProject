@@ -28,9 +28,11 @@ public class HackerController : MonoBehaviour {
 	void OnTriggerEnter (Collider other){
 		if (other.tag == "eShot") {
 			Destroy (other.gameObject);
-			Destroy (gameObject);
+			gameObject.GetComponent<Renderer>().enabled = false;
 			Instantiate (explosion, transform.position, transform.rotation);
-//			Application.LoadLevel (0);
+			PlayerPrefs.SetInt ("data"+PlayerPrefs.GetInt("numHacking"), 0);
+			PlayerPrefs.SetInt ("numHacking", 0);
+			Application.LoadLevel (1);
 		}
 	}
 

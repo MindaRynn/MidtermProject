@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour {
 		noticeSign.GetComponent<Renderer> ().enabled = false;
 		fader = faderObj.GetComponent<Fader> ();
 		fader.gameObject.SetActive (true);
-		DontDestroyOnLoad (this.transform);
+//		DontDestroyOnLoad (this.transform);
 		if (PlayerPrefs.GetString ("PlayerPos") == "" || PlayerPrefs.GetString ("PlayerPos") == null) {
 			pos = new Vector3 (0f, 0.7f, 0f);
 			transform.position = pos;
@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour {
 		else {
 			string[] posStr = PlayerPrefs.GetString ("PlayerPos").Split (',');
 			pos = new Vector3 (float.Parse (posStr [0]), float.Parse (posStr [1]), 0f);
+			canMove = true;
 		}
 		transform.position = pos;
 	}
@@ -184,7 +185,7 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 
 		if (health.HasDied ()) {
-			PlayerPrefs.DeleteKey ("PlayerPos");
+//			PlayerPrefs.DeleteKey ("PlayerPos");
 			fader.gameObject.SetActive (true);
 			fader.FadeOutAndLoad ("GameOver");
 		}
@@ -220,7 +221,7 @@ public class PlayerController : MonoBehaviour {
 				}
 			}
 			else if (Input.GetKeyDown (KeyCode.H)) {
-				PlayerPrefs.DeleteKey ("PlayerPos");
+//				PlayerPrefs.DeleteKey ("PlayerPos");
 			}
 
 			// Run right
