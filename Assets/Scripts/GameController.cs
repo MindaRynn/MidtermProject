@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour {
 
 	void Start () {
 //		PlayerPrefs.SetString ("PlayerPos", 0 + "," + 0.7);		
-//		PlayerPrefs.SetInt ("data1", 0);
+		PlayerPrefs.SetInt ("data1", 0);
 //		PlayerPrefs.SetInt ("data2", 0);
 //		PlayerPrefs.SetInt ("data3", 0);
 //		PlayerPrefs.SetInt ("data4", 0);

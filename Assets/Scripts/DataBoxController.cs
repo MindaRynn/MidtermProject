@@ -10,8 +10,11 @@ public class DataBoxController : MonoBehaviour {
 	AudioSource sound;
 	private GameObject player;
 	public int numData;
+	public GameObject faderObj;
+	private Fader fader;
 
 	void Awake() {
+		fader = faderObj.GetComponent<Fader> ();
 		isOpened = false;
 		canOpen = false;
 		sound = pickUp.GetComponent<AudioSource> ();
@@ -42,6 +45,8 @@ public class DataBoxController : MonoBehaviour {
 				PlayerPrefs.SetString ("PlayerPos", player.transform.position.x + "," + player.transform.position.y);
 				PlayerPrefs.SetInt ("numHacking", numData);
 				Application.LoadLevel (2);
+				fader.gameObject.SetActive (true);
+				fader.FadeOutAndLoad ("MiniGame1");
 			}
 		}
 	}
