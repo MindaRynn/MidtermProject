@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour {
 
 	public string[] dialogueLines;
 
+	public GameObject wall1;
 
 	void Start () {
 //		PlayerPrefs.SetString ("PlayerPos", 0 + "," + 0.7);		
@@ -70,6 +71,8 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (PlayerPrefs.GetInt ("data1") == 1) {
+			Destroy (wall1);	
+		}
 	}
 }
