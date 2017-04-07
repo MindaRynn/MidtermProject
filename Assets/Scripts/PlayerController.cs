@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour {
 		noticeSign.GetComponent<Renderer> ().enabled = false;
 		fader = faderObj.GetComponent<Fader> ();
 		fader.gameObject.SetActive (true);
+		DontDestroyOnLoad (this.transform);
 	}
 
 	public void Walk () {

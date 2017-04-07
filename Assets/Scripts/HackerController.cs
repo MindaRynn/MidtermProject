@@ -30,6 +30,7 @@ public class HackerController : MonoBehaviour {
 			Destroy (other.gameObject);
 			Destroy (gameObject);
 			Instantiate (explosion, transform.position, transform.rotation);
+//			Application.LoadLevel (0);
 		}
 	}
 

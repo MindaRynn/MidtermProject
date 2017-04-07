@@ -9,9 +9,6 @@ public class BoxController : MonoBehaviour {
 	public GameObject player;
 	public GameObject pickUp;
 	AudioSource sound;
-
-	public int x;
-
 	void Start() {
 		isOpened = false;
 		canOpen = false;

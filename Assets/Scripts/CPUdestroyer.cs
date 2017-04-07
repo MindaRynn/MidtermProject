@@ -9,6 +9,7 @@ public class CPUdestroyer : MonoBehaviour {
 	public GameObject explosion;
 	public GameObject UI;
 	public AudioClip shooted, explosionSound;
+	public GameObject hacker;
 	private int count;
 	// Use this for initialization
 	void Start () {
@@ -18,7 +19,6 @@ public class CPUdestroyer : MonoBehaviour {
 	void OnTriggerEnter (Collider other){
 		if (other.tag == "Bolt") {
 			cpu.GetComponent<Renderer>().material.color = new Color(0.267F,0.267F, 0.267F, 1.0F);
-
 			count = count + 1;
 			AudioSource.PlayClipAtPoint(shooted, transform.position,1.0f);
 		}
@@ -37,7 +37,7 @@ public class CPUdestroyer : MonoBehaviour {
 		if (count >= 20) {
 			Instantiate (explosion, transform.position, transform.rotation);
 			Destroy (cpuBox.gameObject);
-			Application.LoadLevel (0);
+			hacker.gameObject.GetComponentInParent<HackerCounter> ().PlusCpuDestroyed ();
 			Destroy (gameObject);
 		}
 	}
