@@ -34,16 +34,13 @@ public class MiniGame3Controller : MonoBehaviour {
 	}
 
 	void StageCompleted () {
-//		PlayerPrefs.SetInt ("data"+PlayerPrefs.GetInt("numHacking"), 1);
-//		PlayerPrefs.SetInt ("numHacking", 0);
+		PlayerPrefs.SetInt ("data"+PlayerPrefs.GetInt("numHacking"), 1);
+		PlayerPrefs.SetInt ("numHacking", 0);
 		fader.gameObject.SetActive (true);
 		fader.FadeOutAndLoad ("MainStage1");
 	}
 
 	void Update(){
-		if (Input.GetKeyDown (KeyCode.T)) {
-			StageCompleted ();
-		}
 		if (hacker.gameObject.GetComponentInParent<HackerCounter>().getCpuDestroyed() >= cpuNum && !hasFaded) {
 			hasFaded = true;
 			StageCompleted ();
