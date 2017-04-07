@@ -100,11 +100,11 @@ public class BossController : MonoBehaviour {
 	{
 		BulletController bullet;
 		if (IsFacingRight ()) {
-			bullet = Instantiate (bulletObj, new Vector3 (transform.position.x + 1f, transform.position.y + 1, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
+			bullet = Instantiate (bulletObj, new Vector3 (transform.position.x + 2f, transform.position.y + 2f, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
 			bullet.direction = "Right";
 		}
 		else {
-			bullet = Instantiate (bulletObj, new Vector3 (transform.position.x - 1f, transform.position.y + 1, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
+			bullet = Instantiate (bulletObj, new Vector3 (transform.position.x - 2f, transform.position.y + 2f, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
 			bullet.direction = "Left";
 		}
 		bullet.shooter = "Bot";
