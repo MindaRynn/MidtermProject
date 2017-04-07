@@ -51,6 +51,7 @@
      <Compile Include="Assets\DataWallController.cs" />
      <Compile Include="Assets\HackerCounter.cs" />
      <Compile Include="Assets\Scripts\BlackCubeController.cs" />
+     <Compile Include="Assets\Scripts\BossController.cs" />
      <Compile Include="Assets\Scripts\BotController.cs" />
      <Compile Include="Assets\Scripts\BoxController.cs" />
      <Compile Include="Assets\Scripts\BulletController.cs" />
