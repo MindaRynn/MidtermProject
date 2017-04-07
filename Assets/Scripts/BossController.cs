@@ -16,6 +16,7 @@ public class BossController : MonoBehaviour {
 	private int bulletDelay;
 	private int radiusRange;
 	private int jumpTime;
+	public bool canAttack;
 	public GameObject bulletObj;
 	public GameObject hpBar;
 
@@ -30,6 +31,7 @@ public class BossController : MonoBehaviour {
 		bulletDelay = 0;
 		radiusRange = 10;
 		jumpTime = 0;
+		canAttack = false;
 	}
 
 	public void Walk () {
@@ -98,15 +100,31 @@ public class BossController : MonoBehaviour {
 
 	private void Shoot ()
 	{
+		Debug.Log ("Shoot");
 		BulletController bullet;
-		if (IsFacingRight ()) {
-			bullet = Instantiate (bulletObj, new Vector3 (transform.position.x + 2f, transform.position.y + 2f, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
-			bullet.direction = "Right";
-		}
-		else {
-			bullet = Instantiate (bulletObj, new Vector3 (transform.position.x - 2f, transform.position.y + 2f, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
-			bullet.direction = "Left";
-		}
+		bullet = Instantiate (bulletObj, new Vector3 (transform.position.x + 2f, transform.position.y + 1.5f, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
+		bullet.direction = "Right";
+		bullet.shooter = "Bot";
+		bullet = Instantiate (bulletObj, new Vector3 (transform.position.x - 2f, transform.position.y + 1.5f, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
+		bullet.direction = "Left";
+		bullet.shooter = "Bot";
+		bullet = Instantiate (bulletObj, new Vector3 (transform.position.x, transform.position.y + 4f, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
+		bullet.direction = "Up";
+		bullet.shooter = "Bot";
+		bullet = Instantiate (bulletObj, new Vector3 (transform.position.x, transform.position.y - 4f, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
+		bullet.direction = "Down";
+		bullet.shooter = "Bot";
+		bullet = Instantiate (bulletObj, new Vector3 (transform.position.x - 2f, transform.position.y + 2.5f, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
+		bullet.direction = "LeftUp";
+		bullet.shooter = "Bot";
+		bullet = Instantiate (bulletObj, new Vector3 (transform.position.x + 2f, transform.position.y + 2.5f, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
+		bullet.direction = "RightUp";
+		bullet.shooter = "Bot";
+		bullet = Instantiate (bulletObj, new Vector3 (transform.position.x - 2f, transform.position.y + 0.5f, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
+		bullet.direction = "LeftDown";
+		bullet.shooter = "Bot";
+		bullet = Instantiate (bulletObj, new Vector3 (transform.position.x + 2f, transform.position.y + 0.5f, transform.position.z), Quaternion.identity).gameObject.GetComponentInParent<BulletController> ();
+		bullet.direction = "RightDown";
 		bullet.shooter = "Bot";
 	}
 
@@ -158,7 +176,7 @@ public class BossController : MonoBehaviour {
 			}
 			if (bulletDelay <= 0) {
 				Shoot ();
-				bulletDelay = 60;
+				bulletDelay = 20;
 			}
 			else {
 				bulletDelay--;

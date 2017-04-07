@@ -34,19 +34,19 @@ public class BulletController : MonoBehaviour {
 			transform.position = Vector3.MoveTowards (transform.position, movementPos, 8 * Time.deltaTime);
 		}
 		else if (direction == "LeftUp") {
-			Vector3 movementPos = new Vector3 (transform.position.x - (3 * 3), transform.position.y, transform.position.z);
+			Vector3 movementPos = new Vector3 (transform.position.x - (3 * Mathf.Cos (45)), transform.position.y + (3 * Mathf.Sin (45)), transform.position.z);
 			transform.position = Vector3.MoveTowards (transform.position, movementPos, 8 * Time.deltaTime);
 		}
 		else if (direction == "RightUp") {
-			Vector3 movementPos = new Vector3 (transform.position.x + 3, transform.position.y, transform.position.z);
+			Vector3 movementPos = new Vector3 (transform.position.x + (3 * Mathf.Cos (45)), transform.position.y + (3 * Mathf.Sin (45)), transform.position.z);
 			transform.position = Vector3.MoveTowards (transform.position, movementPos, 8 * Time.deltaTime);
 		}
 		else if (direction == "LeftDown") {
-			Vector3 movementPos = new Vector3 (transform.position.x + 3, transform.position.y, transform.position.z);
+			Vector3 movementPos = new Vector3 (transform.position.x - (3 * Mathf.Cos (45)), transform.position.y - (3 * Mathf.Sin (45)), transform.position.z);
 			transform.position = Vector3.MoveTowards (transform.position, movementPos, 8 * Time.deltaTime);
 		}
 		else if (direction == "RightDown") {
-			Vector3 movementPos = new Vector3 (transform.position.x + 3, transform.position.y, transform.position.z);
+			Vector3 movementPos = new Vector3 (transform.position.x + (3 * Mathf.Cos (45)), transform.position.y - (3 * Mathf.Sin (45)), transform.position.z);
 			transform.position = Vector3.MoveTowards (transform.position, movementPos, 8 * Time.deltaTime);
 		}
 	}
