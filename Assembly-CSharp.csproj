@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Chibi Mummy\Scripts\anims_controls.cs" />
      <Compile Include="Assets\Chibi Mummy\Scripts\control_script.cs" />
+     <Compile Include="Assets\DataWallController.cs" />
      <Compile Include="Assets\HackerCounter.cs" />
      <Compile Include="Assets\Scripts\BlackCubeController.cs" />
      <Compile Include="Assets\Scripts\BossController.cs" />
@@ -93,6 +94,7 @@
      <None Include="Assets\TextFiles\dialog01.txt" />
      <None Include="Assets\TextFiles\TestText2.txt" />
      <None Include="Assets\Chibi Mummy\readme.txt" />
+     <None Include="Assets\TextFiles\DataAlert.txt" />
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
