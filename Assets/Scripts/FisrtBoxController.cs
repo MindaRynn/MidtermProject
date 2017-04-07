@@ -28,6 +28,11 @@ public class FisrtBoxController : MonoBehaviour {
 	void Start() {
 		isOpened = false;
 		canOpen = false;
+		if (PlayerPrefs.GetInt ("data5") == 1) {
+			arrow.GetComponent<Renderer> ().enabled = false;
+			isOpened = true;
+			DestroyDoor ();
+		}
 	}
 	void OnTriggerEnter (Collider other){
 		if (other.tag == "Player" && !isOpened ) {
@@ -49,14 +54,19 @@ public class FisrtBoxController : MonoBehaviour {
 				isOpened = true;
 				arrow.GetComponent<Renderer>().enabled = false;
 				AudioSource.PlayClipAtPoint(pickUp, transform.position,1.0f);
-				Destroy (lockSign);
-				Destroy (wall);
+				DestroyDoor ();
 				if (!dialogueManager.isActive) {
 					dialogueManager.dialogueLines = dialogueLines;
 					dialogueManager.currentLine = 0;
 					dialogueManager.ShowDialogue ();
 				}
+				PlayerPrefs.SetInt ("data5", 1);
 			}
 		}
+	}
+
+	void DestroyDoor(){
+		Destroy (lockSign);
+		Destroy (wall);
 	}
 }

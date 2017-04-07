@@ -9,12 +9,17 @@ public class DataBoxController : MonoBehaviour {
 	public GameObject pickUp;
 	AudioSource sound;
 	private GameObject player;
+	public int numData;
 
 	void Awake() {
 		isOpened = false;
 		canOpen = false;
 		sound = pickUp.GetComponent<AudioSource> ();
 		player = GameObject.Find ("Player").gameObject;
+		if (PlayerPrefs.GetInt ("data"+numData) == 1) {
+			arrow.GetComponent<Renderer> ().enabled = false;
+			isOpened = true;
+		}
 	}
 	void OnTriggerEnter (Collider other){
 		if (other.tag == "Player" && !isOpened ) {
@@ -35,7 +40,8 @@ public class DataBoxController : MonoBehaviour {
 				isOpened = true;
 				arrow.GetComponent<Renderer>().enabled = false;
 				PlayerPrefs.SetString ("PlayerPos", player.transform.position.x + "," + player.transform.position.y);
-				Application.LoadLevel (1);
+				PlayerPrefs.SetInt ("numHacking", numData);
+				Application.LoadLevel (2);
 			}
 		}
 	}

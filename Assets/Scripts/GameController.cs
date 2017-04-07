@@ -12,13 +12,23 @@ public class GameController : MonoBehaviour {
 
 	public string[] dialogueLines;
 
+
 	void Start () {
+//		PlayerPrefs.SetString ("PlayerPos", 0 + "," + 0.7);		
+//		PlayerPrefs.SetInt ("data1", 0);
+//		PlayerPrefs.SetInt ("data2", 0);
+//		PlayerPrefs.SetInt ("data3", 0);
+//		PlayerPrefs.SetInt ("data4", 0);
+//		PlayerPrefs.SetInt ("data5", 0);
+//		PlayerPrefs.SetInt ("moveCam1", 0);
 		sound = alertSound.GetComponent<AudioSource> ();
-		sound.Play();
-		if (!dialogueManager.isActive) {
-			dialogueManager.dialogueLines = dialogueLines;
-			dialogueManager.currentLine = 0;
-			dialogueManager.ShowDialogue ();
+		if (PlayerPrefs.GetInt ("data5") == 0) {
+			sound.Play();
+			if (!dialogueManager.isActive) {
+				dialogueManager.dialogueLines = dialogueLines;
+				dialogueManager.currentLine = 0;
+				dialogueManager.ShowDialogue ();
+			}
 		}
 	}
 
@@ -56,9 +66,6 @@ public class GameController : MonoBehaviour {
 	IEnumerator PlaySound(){
 		alertSound.GetComponent<AudioSource>().Play();
 		yield return new WaitForSeconds(6.0f);
-	}
-
-	void A(){
 	}
 	
 	// Update is called once per frame

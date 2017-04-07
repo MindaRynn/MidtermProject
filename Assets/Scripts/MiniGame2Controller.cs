@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class MiniGame2Controller : MonoBehaviour {
 	public GameObject whiteBox,blackBox;
-
+	private int cpuNum;
+	public GameObject hacker;
 	// Use this for initialization
 	void Start () {
+		cpuNum = 1;
 		string[] maze = new string[10];
 		maze [0] = "ooo##ooooo#oooo#o#oooo#oo#oo#o#oo#ooo#ooooo##oo#oooo#oo#o#oo";
 		maze [1] = "ooo##ooooo#oo#o##ooooo##o#oo#ooooo#oo#oo#o##oooo#o##o##oo##o";
@@ -32,6 +34,14 @@ public class MiniGame2Controller : MonoBehaviour {
 					check++;
 				}
 			}
+		}
+	}
+
+	void Update(){
+		if (hacker.gameObject.GetComponentInParent<HackerCounter>().getCpuDestroyed() >= cpuNum) {
+			PlayerPrefs.SetInt ("data"+PlayerPrefs.GetInt("numHacking"), 1);
+			PlayerPrefs.SetInt ("numHacking", 0);
+			Application.LoadLevel (1);
 		}
 	}
 }
