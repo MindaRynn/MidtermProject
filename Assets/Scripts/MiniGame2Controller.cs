@@ -58,9 +58,7 @@ public class MiniGame2Controller : MonoBehaviour {
 			StageCompleted ();
 		}
 		if (hacker.gameObject.GetComponentInParent<HackerCounter>().getCpuDestroyed() >= cpuNum && !hasFaded) {
-			Debug.Log (hasFaded);
 			hasFaded = true;
-			Debug.Log (hasFaded);
 			StageCompleted ();
 		}
 	}
