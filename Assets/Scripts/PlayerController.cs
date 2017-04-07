@@ -184,10 +184,16 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		Debug.Log (health.GetHP ());
+
 		if (health.HasDied ()) {
-//			PlayerPrefs.DeleteKey ("PlayerPos");
+			Debug.Log ("YOU ARE DEAD!!!");
+			PlayerPrefs.DeleteKey ("PlayerPos");
 			fader.gameObject.SetActive (true);
 			fader.FadeOutAndLoad ("GameOver");
+			canMove = false;
+			health.Heal (100);
+			return;
 		}
 
 		if (canMove) {
