@@ -88,6 +88,7 @@
      <Compile Include="Assets\Scripts\Rotator.cs" />
      <Compile Include="Assets\Scripts\ShotterController.cs" />
      <Compile Include="Assets\Scripts\Stage1Controller.cs" />
+     <Compile Include="Assets\Scripts\Stage2Controller.cs" />
      <Compile Include="Assets\Scripts\StageEnder.cs" />
      <Compile Include="Assets\Scripts\WhiteBoxController.cs" />
      <None Include="Assets\TextFiles\dialog03.txt" />
