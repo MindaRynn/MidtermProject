@@ -41,12 +41,11 @@ public class DataBoxController : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Tab)) {
 			if (!isOpened && canOpen) {
 				isOpened = true;
-				arrow.GetComponent<Renderer>().enabled = false;
 				PlayerPrefs.SetString ("PlayerPos", player.transform.position.x + "," + player.transform.position.y);
 				PlayerPrefs.SetInt ("numHacking", numData);
-				Application.LoadLevel (2);
+//				Application.LoadLevel (2);
 				fader.gameObject.SetActive (true);
-				fader.FadeOutAndLoad ("MiniGame1");
+				fader.FadeOutAndLoad ("MiniGame2");
 			}
 		}
 	}

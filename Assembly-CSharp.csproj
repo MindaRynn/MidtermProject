@@ -46,22 +46,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ButtonController.cs" />
      <Compile Include="Assets\Chibi Mummy\Scripts\anims_controls.cs" />
      <Compile Include="Assets\Chibi Mummy\Scripts\control_script.cs" />
-     <Compile Include="Assets\DataWallController.cs" />
-     <Compile Include="Assets\HackerCounter.cs" />
-     <Compile Include="Assets\MenuController.cs" />
      <Compile Include="Assets\Scripts\BlackCubeController.cs" />
      <Compile Include="Assets\Scripts\BossController.cs" />
      <Compile Include="Assets\Scripts\BotController.cs" />
      <Compile Include="Assets\Scripts\BoxController.cs" />
      <Compile Include="Assets\Scripts\BulletController.cs" />
+     <Compile Include="Assets\Scripts\ButtonController.cs" />
      <Compile Include="Assets\Scripts\CPUcontroller.cs" />
      <Compile Include="Assets\Scripts\CPUdestroyer.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\CameraMover.cs" />
      <Compile Include="Assets\Scripts\DataBoxController.cs" />
+     <Compile Include="Assets\Scripts\DataWallController.cs" />
      <Compile Include="Assets\Scripts\DestroyByBoundary.cs" />
      <Compile Include="Assets\Scripts\DialogueHolder.cs" />
      <Compile Include="Assets\Scripts\DialogueManager.cs" />
@@ -74,9 +72,13 @@
      <Compile Include="Assets\Scripts\GateController.cs" />
      <Compile Include="Assets\Scripts\GroundChecker.cs" />
      <Compile Include="Assets\Scripts\HackerController.cs" />
+     <Compile Include="Assets\Scripts\HackerCounter.cs" />
      <Compile Include="Assets\Scripts\HealthController.cs" />
      <Compile Include="Assets\Scripts\LiftController.cs" />
+     <Compile Include="Assets\Scripts\LiftHackingController.cs" />
+     <Compile Include="Assets\Scripts\LiftMover.cs" />
      <Compile Include="Assets\Scripts\LightController.cs" />
+     <Compile Include="Assets\Scripts\MenuController.cs" />
      <Compile Include="Assets\Scripts\MiniGame2Controller.cs" />
      <Compile Include="Assets\Scripts\MiniGame3Controller.cs" />
      <Compile Include="Assets\Scripts\MiniGameCameraController.cs" />
@@ -91,10 +93,12 @@
      <Compile Include="Assets\Scripts\Stage2Controller.cs" />
      <Compile Include="Assets\Scripts\StageEnder.cs" />
      <Compile Include="Assets\Scripts\WhiteBoxController.cs" />
+     <Compile Include="Assets\Scripts\stage2dialog1.cs" />
      <None Include="Assets\TextFiles\dialog03.txt" />
      <None Include="Assets\TextFiles\TestText.txt" />
      <None Include="Assets\TextFiles\dialog02.txt" />
      <None Include="Assets\TextFiles\dialog01.txt" />
+     <None Include="Assets\TextFiles\dialog04.txt" />
      <None Include="Assets\TextFiles\TestText2.txt" />
      <None Include="Assets\Chibi Mummy\readme.txt" />
      <None Include="Assets\TextFiles\DataAlert.txt" />

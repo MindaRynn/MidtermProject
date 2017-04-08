@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class StageEnder : MonoBehaviour {
 
-	public GameObject faderObj;
+	public GameObject faderObj,liftGroup;
 	private Fader fader;
-
+	private Vector3 pos;
+	public float x, y, z;
 	// Use this for initialization
 	void Awake () {
 		fader = faderObj.GetComponent<Fader> ();
+		pos = new Vector3 (x, y, z);
 	}
 
 	void OnTriggerEnter (Collider obj) {
 		if (obj.gameObject.tag == "Player") {
+			liftGroup.gameObject.GetComponentInParent<LiftMover> ().ActiveLift ();
 			fader.gameObject.SetActive (true);
-			fader.FadeOutAndIn (new Vector3 (120, 51, 0));
+			fader.FadeOutAndIn (pos);
 		}
 	}
 	

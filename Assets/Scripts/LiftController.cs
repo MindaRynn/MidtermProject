@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LiftController : MonoBehaviour {
 
-	public int maxHeight, minHeight;
+	public int maxHeight,minHeight;
 	public float speed;
 	private float x;
 	public GameObject scaleFixer;
