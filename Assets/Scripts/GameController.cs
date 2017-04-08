@@ -15,14 +15,6 @@ public class GameController : MonoBehaviour {
 	public GameObject wall1;
 
 	void Start () {
-//		PlayerPrefs.SetString ("PlayerPos", 0 + "," + 0.7);		
-//		PlayerPrefs.SetInt ("data1", 0);
-//		PlayerPrefs.SetInt ("data2", 0);
-//		PlayerPrefs.SetInt ("data3", 0);
-//		PlayerPrefs.SetInt ("data4", 0);
-//		PlayerPrefs.SetInt ("data5", 0);
-//		PlayerPrefs.SetInt ("moveCam1", 0);
-		sound = alertSound.GetComponent<AudioSource> ();
 		if (PlayerPrefs.GetInt ("data5") == 0) {
 			sound.Play();
 			if (!dialogueManager.isActive) {
@@ -34,6 +26,19 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Awake () {
+		PlayerPrefs.SetString ("PlayerPos", 0 + "," + 0.7);		
+		PlayerPrefs.SetInt ("data1", 0);
+		PlayerPrefs.SetInt ("data2", 0);
+		PlayerPrefs.SetInt ("data3", 0);
+		PlayerPrefs.SetInt ("data4", 0);
+		PlayerPrefs.SetInt ("data5", 0);
+		PlayerPrefs.SetInt ("data6", 0);
+		PlayerPrefs.SetInt ("data7", 0);
+		PlayerPrefs.SetInt ("moveCam1", 0);
+		PlayerPrefs.SetInt ("moveCam2", 0);
+		PlayerPrefs.SetInt ("moveCam3", 0);
+		PlayerPrefs.SetInt ("bossChanging", 0);
+		sound = alertSound.GetComponent<AudioSource> ();
 		dialogueManager = FindObjectOfType<DialogueManager> ();
 		if (textFile != null) {
 			dialogueLines = textFile.text.Split ('\n');
@@ -41,25 +46,33 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void playStateOne(){
-		sound.Stop ();
+		if (sound.isPlaying) {
+			sound.Stop ();
+		}
 		sound = stage1.GetComponent<AudioSource> ();
 		sound.Play();
 	}
 
 	public void playStateTwo(){
-		sound.Stop ();
+		if (sound.isPlaying) {
+			sound.Stop ();
+		}
 		sound = stage2.GetComponent<AudioSource> ();
 		sound.Play();
 	}
 
 	public void playStateThree(){
-		sound.Stop ();
+		if (sound.isPlaying) {
+			sound.Stop ();
+		}
 		sound = stage3.GetComponent<AudioSource> ();
 		sound.Play();
 	}
 
 	public void playBoss(){
-		sound.Stop ();
+		if (sound.isPlaying) {
+			sound.Stop ();
+		}
 		sound = boss.GetComponent<AudioSource> ();
 		sound.Play();
 	}

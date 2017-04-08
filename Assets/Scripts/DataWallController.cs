@@ -5,6 +5,8 @@ using UnityEngine;
 public class DataWallController : MonoBehaviour {
 
 	public GameObject wall1, block1;
+	public GameObject wall2, block2;
+
 	public GameObject liftColl;
 	// Use this for initialization
 	void Start () {
@@ -17,6 +19,12 @@ public class DataWallController : MonoBehaviour {
 			wall1.gameObject.SetActive (true);
 		} else {
 			Destroy (block1);
+		}
+
+		if (PlayerPrefs.GetInt ("data2") == 0||PlayerPrefs.GetInt ("data3") == 0||PlayerPrefs.GetInt ("data4") == 0) {
+			wall2.gameObject.SetActive (true);
+		} else {
+			Destroy (block2);
 		}
 	}
 }

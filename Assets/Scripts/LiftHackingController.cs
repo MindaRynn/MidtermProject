@@ -10,8 +10,24 @@ public class LiftHackingController : MonoBehaviour {
 	private GameObject player;
 	public GameObject faderObj;
 	private Fader fader;
+
+	public string dialogue;
+
+	private DialogueManager dialogueManager;
+
+	public TextAsset textFile;
+
+	public string[] dialogueLines;
+
+	private bool message;
+
 	// Use this for initialization
 	void Awake () {
+		dialogueManager = FindObjectOfType<DialogueManager> ();
+		if (textFile != null) {
+			dialogueLines = textFile.text.Split ('\n');
+		}
+		message = false;
 		isOpened = false;
 		canOpen = false;
 		fader = faderObj.GetComponent<Fader> ();
@@ -28,6 +44,14 @@ public class LiftHackingController : MonoBehaviour {
 		if (other.tag == "Player" && !isOpened ) {
 			noticeSign.GetComponent<Renderer>().enabled = true;
 			canOpen = true;
+			if (!message) {
+				if (!dialogueManager.isActive) {
+					dialogueManager.dialogueLines = dialogueLines;
+					dialogueManager.currentLine = 0;
+					dialogueManager.ShowDialogue ();
+					message = true;
+				}
+			}
 		}
 	}
 	void OnTriggerExit (Collider other){

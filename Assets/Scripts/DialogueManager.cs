@@ -15,6 +15,7 @@ public class DialogueManager : MonoBehaviour {
 	private Vector3 hidingPos;
 
 	private PlayerController player;
+	private GameObject doctor,gameController;
 
 	// Use this for initialization
 	void Start () {
@@ -65,6 +66,14 @@ public class DialogueManager : MonoBehaviour {
 		player.canMove = true;
 		player.dialogRunning = false;
 		currentLine = 0;
+		if (PlayerPrefs.GetInt ("bossChanging") == 1) {
+			doctor = GameObject.Find ("Doctor");
+			gameController = GameObject.Find ("GameController");
+			doctor.GetComponent<Animation> ().Play();
+			doctor.gameObject.GetComponentInParent<MaterialController> ().Changing ();
+			gameController.gameObject.GetComponentInParent<GameController> ().playBoss ();
+			doctor.gameObject.GetComponent<BossController> ().enabled = true;
+		}
 	}
 
 	//	public void ShowBox (string dialogue) {

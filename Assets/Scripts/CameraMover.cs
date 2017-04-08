@@ -12,10 +12,13 @@ public class CameraMover : MonoBehaviour {
 	public TextAsset textFile;
 
 	public string[] dialogueLines;
+	public int numCam;
+	public AnimationClip anim;
 
 	// Use this for initialization
 	void Start(){
-		if (PlayerPrefs.GetInt ("moveCam1") == 1) {
+		myCamera.GetComponent<Animation> ().AddClip (anim, "move"+numCam);
+		if (PlayerPrefs.GetInt ("moveCam"+numCam) == 1) {
 			gameController.gameObject.GetComponentInParent<GameController> ().playStateOne ();
 			Destroy (gameObject);
 		}
@@ -29,15 +32,17 @@ public class CameraMover : MonoBehaviour {
 		
 	void OnTriggerEnter (Collider other){
 		if(other.tag == "Player"){
-			gameController.gameObject.GetComponentInParent<GameController> ().playStateOne ();
-			myCamera.GetComponent<Animation> ().Play();
+			if (numCam == 1) {
+				gameController.gameObject.GetComponentInParent<GameController> ().playStateOne ();
+			}
+			myCamera.GetComponent<Animation> ().Play("move"+numCam);
 			if (!dialogueManager.isActive) {
 				dialogueManager.dialogueLines = dialogueLines;
 				dialogueManager.currentLine = 0;
 				dialogueManager.ShowDialogue ();
 			}
+			PlayerPrefs.SetInt ("moveCam"+numCam, 1);
 			Destroy (gameObject);
-			PlayerPrefs.SetInt ("moveCam1", 1);
 		}
 	}
 }

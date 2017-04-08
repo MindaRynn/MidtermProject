@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Chibi Mummy\Scripts\anims_controls.cs" />
      <Compile Include="Assets\Chibi Mummy\Scripts\control_script.cs" />
+     <Compile Include="Assets\MaterialController.cs" />
      <Compile Include="Assets\Scripts\BlackCubeController.cs" />
      <Compile Include="Assets\Scripts\BossController.cs" />
      <Compile Include="Assets\Scripts\BotController.cs" />
@@ -94,12 +95,19 @@
      <Compile Include="Assets\Scripts\StageEnder.cs" />
      <Compile Include="Assets\Scripts\WhiteBoxController.cs" />
      <Compile Include="Assets\Scripts\stage2dialog1.cs" />
+     <Compile Include="Assets\Stage2Ender.cs" />
+     <Compile Include="Assets\stage3dialog.cs" />
      <None Include="Assets\TextFiles\dialog03.txt" />
+     <None Include="Assets\TextFiles\Lift2.txt" />
      <None Include="Assets\TextFiles\TestText.txt" />
      <None Include="Assets\TextFiles\dialog02.txt" />
+     <None Include="Assets\TextFiles\DataView.txt" />
      <None Include="Assets\TextFiles\dialog01.txt" />
+     <None Include="Assets\TextFiles\itemView.txt" />
+     <None Include="Assets\TextFiles\boss.txt" />
      <None Include="Assets\TextFiles\dialog04.txt" />
      <None Include="Assets\TextFiles\TestText2.txt" />
+     <None Include="Assets\TextFiles\dialog05.txt" />
      <None Include="Assets\Chibi Mummy\readme.txt" />
      <None Include="Assets\TextFiles\DataAlert.txt" />
  <Reference Include="UnityEngine.Analytics">
