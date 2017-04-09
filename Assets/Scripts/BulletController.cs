@@ -8,6 +8,7 @@ public class BulletController : MonoBehaviour {
 	private HealthController player;
 	public string direction;
 	public string shooter;
+	public GameObject healBall;
 
 	// Use this for initialization
 	void Awake () {
@@ -56,6 +57,7 @@ public class BulletController : MonoBehaviour {
 			if (obj.gameObject.tag == "Bot") {
 				obj.gameObject.GetComponentInParent<HealthController> ().Damage (10);
 				if (obj.gameObject.GetComponentInParent<HealthController> ().GetHP () <= 0) {
+					Instantiate(healBall, obj.transform.position , obj.transform.rotation);
 					Destroy (obj.gameObject);
 				}
 			}

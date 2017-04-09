@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Chibi Mummy\Scripts\anims_controls.cs" />
      <Compile Include="Assets\Chibi Mummy\Scripts\control_script.cs" />
+     <Compile Include="Assets\HealBallController.cs" />
      <Compile Include="Assets\MaterialController.cs" />
      <Compile Include="Assets\Scripts\BlackCubeController.cs" />
      <Compile Include="Assets\Scripts\BossController.cs" />
