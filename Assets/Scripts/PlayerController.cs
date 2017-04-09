@@ -185,7 +185,14 @@ public class PlayerController : MonoBehaviour {
 
 	private void PlayerFellOff () {
 		if (transform.position.y <= -5f) {
-			health.Damage (1000);
+			if (transform.position.x >= 260 && transform.position.x <= 430) {
+				Vector3 spawnPos = new Vector3 (295f, 95f, 0f);
+				transform.position = spawnPos;
+				health.Damage (20);
+			}
+			else {
+				health.Damage (100);
+			}
 		}
 	}
 
