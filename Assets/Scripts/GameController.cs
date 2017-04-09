@@ -26,18 +26,19 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Awake () {
-//		PlayerPrefs.SetString ("PlayerPos", 0 + "," + 0.7);
-//		PlayerPrefs.SetInt ("data1", 0);
-//		PlayerPrefs.SetInt ("data2", 0);
-//		PlayerPrefs.SetInt ("data3", 0);
-//		PlayerPrefs.SetInt ("data4", 0);
-//		PlayerPrefs.SetInt ("data5", 0);
-//		PlayerPrefs.SetInt ("data6", 0);
-//		PlayerPrefs.SetInt ("data7", 0);
-//		PlayerPrefs.SetInt ("moveCam1", 0);
-//		PlayerPrefs.SetInt ("moveCam2", 0);
-//		PlayerPrefs.SetInt ("moveCam3", 0);
-//		PlayerPrefs.SetInt ("bossChanging", 0);
+		PlayerPrefs.SetString ("PlayerPos", 493 + "," + 159.5);
+		PlayerPrefs.SetInt ("data1", 1);
+		PlayerPrefs.SetInt ("data2", 1);
+		PlayerPrefs.SetInt ("data3", 1);
+		PlayerPrefs.SetInt ("data4", 1);
+		PlayerPrefs.SetInt ("data5", 1);
+		PlayerPrefs.SetInt ("data6", 1);
+		PlayerPrefs.SetInt ("data7", 1);
+		PlayerPrefs.SetInt ("moveCam1", 1);
+		PlayerPrefs.SetInt ("moveCam2", 1);
+		PlayerPrefs.SetInt ("moveCam3", 1);
+		PlayerPrefs.SetInt ("bossChanging", 0);
+		PlayerPrefs.SetInt ("isDoctorDied", 0);
 		sound = alertSound.GetComponent<AudioSource> ();
 		dialogueManager = FindObjectOfType<DialogueManager> ();
 		if (textFile != null) {
@@ -84,8 +85,10 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (PlayerPrefs.GetInt ("data1") == 1) {
-			Destroy (wall1);	
+		if (Input.GetKeyDown (KeyCode.P)) {
+			PlayerPrefs.SetInt ("isDoctorDied", 1);
+			Destroy (GameObject.Find ("Doctor"));
+			playStateOne ();
 		}
 	}
 }

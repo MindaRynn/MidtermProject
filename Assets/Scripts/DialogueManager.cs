@@ -73,6 +73,7 @@ public class DialogueManager : MonoBehaviour {
 			doctor.gameObject.GetComponentInParent<MaterialController> ().Changing ();
 			gameController.gameObject.GetComponentInParent<GameController> ().playBoss ();
 			doctor.gameObject.GetComponent<BossController> ().enabled = true;
+			PlayerPrefs.SetInt ("bossChanging", 0);
 		}
 	}
 

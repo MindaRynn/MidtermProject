@@ -64,6 +64,15 @@ public class BulletController : MonoBehaviour {
 						Destroy (obj.gameObject);
 					}
 				}
+
+				if (obj.gameObject.tag == "Doctor") {
+					obj.gameObject.GetComponentInParent<HealthController> ().Damage (10);
+					if (obj.gameObject.GetComponentInParent<HealthController> ().GetHP () <= 0) {
+						Instantiate (healBall, obj.transform.position, obj.transform.rotation);
+						PlayerPrefs.SetInt ("isDoctorDied", 1);
+						Destroy (obj.gameObject);
+					}
+				}
 			} else if (shooter == "Bot") {
 				if (obj.gameObject.tag == "Player") {
 					obj.gameObject.GetComponentInParent<HealthController> ().Damage (10);

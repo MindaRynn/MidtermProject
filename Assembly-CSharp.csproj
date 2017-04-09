@@ -96,7 +96,9 @@
      <Compile Include="Assets\Scripts\StageEnder.cs" />
      <Compile Include="Assets\Scripts\WhiteBoxController.cs" />
      <Compile Include="Assets\Scripts\stage2dialog1.cs" />
+     <Compile Include="Assets\ServerHackingController.cs" />
      <Compile Include="Assets\Stage2Ender.cs" />
+     <Compile Include="Assets\finalDialog.cs" />
      <Compile Include="Assets\stage3dialog.cs" />
      <None Include="Assets\TextFiles\dialog03.txt" />
      <None Include="Assets\TextFiles\Lift2.txt" />
@@ -108,20 +110,21 @@
      <None Include="Assets\TextFiles\boss.txt" />
      <None Include="Assets\TextFiles\dialog04.txt" />
      <None Include="Assets\TextFiles\TestText2.txt" />
+     <None Include="Assets\TextFiles\FinalDialog.txt" />
      <None Include="Assets\TextFiles\dialog05.txt" />
      <None Include="Assets\Chibi Mummy\readme.txt" />
      <None Include="Assets\TextFiles\DataAlert.txt" />
- <Reference Include="UnityEngine.UI">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Networking">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.PlaymodeTestsRunner">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/PlaymodeTestsRunner/UnityEngine.PlaymodeTestsRunner.dll</HintPath>
  </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UI">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>

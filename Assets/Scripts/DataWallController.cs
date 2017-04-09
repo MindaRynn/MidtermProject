@@ -6,6 +6,7 @@ public class DataWallController : MonoBehaviour {
 
 	public GameObject wall1, block1;
 	public GameObject wall2, block2;
+	public GameObject serverBlock;
 
 	public GameObject liftColl;
 	// Use this for initialization
@@ -25,6 +26,10 @@ public class DataWallController : MonoBehaviour {
 			wall2.gameObject.SetActive (true);
 		} else {
 			Destroy (block2);
+		}
+
+		if (PlayerPrefs.GetInt ("isDoctorDied") == 1) {
+			Destroy (serverBlock);
 		}
 	}
 }

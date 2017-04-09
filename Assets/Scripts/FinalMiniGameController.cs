@@ -30,6 +30,7 @@ public class FinalMiniGameController : MonoBehaviour {
 
 	void Update(){
 		if (hacker.gameObject.GetComponentInParent<HackerCounter>().getCpuDestroyed() >= cpuNum) {
+			
 			gate1.gameObject.GetComponentInParent<GateController> ().DestroyGate ();
 		}
 	}
