@@ -45,5 +45,8 @@ public class MiniGame3Controller : MonoBehaviour {
 			hasFaded = true;
 			StageCompleted ();
 		}
+		if (Input.GetKeyDown (KeyCode.P)) {
+			StageCompleted ();
+		}
 	}
 }

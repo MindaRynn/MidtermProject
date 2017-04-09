@@ -50,6 +50,8 @@
      <Compile Include="Assets\Chibi Mummy\Scripts\control_script.cs" />
      <Compile Include="Assets\HealBallController.cs" />
      <Compile Include="Assets\MaterialController.cs" />
+     <Compile Include="Assets\PlayerFinalCut.cs" />
+     <Compile Include="Assets\ReturnToTitle.cs" />
      <Compile Include="Assets\Scripts\BlackCubeController.cs" />
      <Compile Include="Assets\Scripts\BossController.cs" />
      <Compile Include="Assets\Scripts\BotController.cs" />
@@ -97,6 +99,7 @@
      <Compile Include="Assets\Scripts\WhiteBoxController.cs" />
      <Compile Include="Assets\Scripts\stage2dialog1.cs" />
      <Compile Include="Assets\ServerHackingController.cs" />
+     <Compile Include="Assets\ServerShuter.cs" />
      <Compile Include="Assets\Stage2Ender.cs" />
      <Compile Include="Assets\finalDialog.cs" />
      <Compile Include="Assets\stage3dialog.cs" />

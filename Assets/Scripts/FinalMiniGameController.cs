@@ -8,9 +8,11 @@ public class FinalMiniGameController : MonoBehaviour {
 	public GameObject hacker;
 	private int cpuNum;
 	public GameObject gate1;
+	public bool gateDestroyed;
 
 	// Use this for initialization
 	void Start () {
+		gateDestroyed = false;
 		cpuNum = 2;
 		string maze = "oo##oo##oo##oo##oo##oo##ooo#ooo#o#oo#o#o#oo#ooo#o#o##o#o#o##ooo#o#o#oo#o#ooo#o##o#oo##o##oo#oo##o##oooo#oo###o#oo#o##o###oo#o##o#o#ooo#ooo##o#o##o#oooooo#o#o#o###oo###o##oo##oo###oooooooo#o#o#o##oooooooo####o##oo#ooo#o#oo######o#oooo#oo#o##ooo#o#o#o##oo#o#oo#o#oo#o##ooo###oooo##oo##oo#o####ooo#oo##oo#o##o##o##o#o#oo##o#o#oooo#ooo##o#oo#ooo#ooo#ooooo#oo#o#oo#o##o##o#oo####o#oo####o##o##o#o#####oo#o#o###o####o#oo#o##ooo#####oo#o#ooo#ooo##o#####ooooo#o###o#o#o##o#ooooo#oo#oo#ooooo#oo#ooo#ooo######oo#####o##o###o#o##ooooooo#ooooo#o#o#o#o#o##o#ooooooo#ooo##oo#o#o####oo####ooo###oo#o##ooo#ooo#o##ooo##o#o#o#o#oo##o#oo#o##o##";
 		int check = 0;
@@ -29,9 +31,9 @@ public class FinalMiniGameController : MonoBehaviour {
 	}
 
 	void Update(){
-		if (hacker.gameObject.GetComponentInParent<HackerCounter>().getCpuDestroyed() >= cpuNum) {
-			
+		if (hacker.gameObject.GetComponentInParent<HackerCounter>().getCpuDestroyed() >= cpuNum && !gateDestroyed) {
 			gate1.gameObject.GetComponentInParent<GateController> ().DestroyGate ();
+			gateDestroyed = true;
 		}
 	}
 }

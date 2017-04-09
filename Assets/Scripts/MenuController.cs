@@ -23,7 +23,13 @@ public class MenuController : MonoBehaviour {
 		PlayerPrefs.SetInt ("data3", 0);
 		PlayerPrefs.SetInt ("data4", 0);
 		PlayerPrefs.SetInt ("data5", 0);
+		PlayerPrefs.SetInt ("data6", 0);
+		PlayerPrefs.SetInt ("data7", 0);
 		PlayerPrefs.SetInt ("moveCam1", 0);
+		PlayerPrefs.SetInt ("moveCam2", 0);
+		PlayerPrefs.SetInt ("moveCam3", 0);
+		PlayerPrefs.SetInt ("bossChanging", 0);
+		PlayerPrefs.SetInt ("isDoctorDied", 0);
 		fader.gameObject.SetActive (true);
 		fader.FadeOutAndLoad ("MainStage1");
 	}

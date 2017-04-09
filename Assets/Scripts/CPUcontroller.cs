@@ -5,13 +5,14 @@ using UnityEngine;
 public class CPUcontroller : MonoBehaviour {
 	public GameObject shot1,shot2,shot3,shot4;
 	public Transform spotSpawn1,spotSpawn2,spotSpawn3,spotSpawn4;
-	public float fireRate;
+	private float fireRate;
 	private float nextFire;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Awake(){
+		fireRate = 0.25f;
 	}
+
 	
 	// Update is called once per frame
 	void Update () {

@@ -8,7 +8,7 @@ public class HackerController : MonoBehaviour {
 	public GameObject shot;
 	public Transform spotSpawn;
 	public float speed;
-	public float fireRate;
+	private float fireRate = 0.1f;
 	private float nextFire;
 	public GameObject explosion;
 	public GameObject faderObj;

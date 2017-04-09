@@ -26,19 +26,6 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Awake () {
-		PlayerPrefs.SetString ("PlayerPos", 493 + "," + 159.5);
-		PlayerPrefs.SetInt ("data1", 1);
-		PlayerPrefs.SetInt ("data2", 1);
-		PlayerPrefs.SetInt ("data3", 1);
-		PlayerPrefs.SetInt ("data4", 1);
-		PlayerPrefs.SetInt ("data5", 1);
-		PlayerPrefs.SetInt ("data6", 1);
-		PlayerPrefs.SetInt ("data7", 1);
-		PlayerPrefs.SetInt ("moveCam1", 1);
-		PlayerPrefs.SetInt ("moveCam2", 1);
-		PlayerPrefs.SetInt ("moveCam3", 1);
-		PlayerPrefs.SetInt ("bossChanging", 0);
-		PlayerPrefs.SetInt ("isDoctorDied", 0);
 		sound = alertSound.GetComponent<AudioSource> ();
 		dialogueManager = FindObjectOfType<DialogueManager> ();
 		if (textFile != null) {
