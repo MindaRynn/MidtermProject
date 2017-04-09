@@ -45,5 +45,11 @@ public class ServerShuter : MonoBehaviour {
 			destroyed = true;
 			fader.FadeOutAndLoad ("FinalScene");
 		}
+
+		if (Input.GetKeyDown (KeyCode.P)) {
+			fader.gameObject.SetActive (true);
+			destroyed = true;
+			fader.FadeOutAndLoad ("FinalScene");
+		}
 	}
 }
