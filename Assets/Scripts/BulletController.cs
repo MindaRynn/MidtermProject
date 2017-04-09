@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BulletController : MonoBehaviour {
 
 	private HealthController player;
+	private PlayerController playerCtrl;
 	public string direction;
 	public string shooter;
 	public GameObject healBall;
@@ -13,6 +14,7 @@ public class BulletController : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		player = (HealthController) GameObject.Find ("Player").GetComponent ("HealthController");
+		playerCtrl = (PlayerController) GameObject.Find ("Player").GetComponent ("PlayerController");
 	}
 
 	// Update is called once per frame
@@ -53,20 +55,24 @@ public class BulletController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider obj) {
-		if (shooter == "Player") {
-			if (obj.gameObject.tag == "Bot") {
-				obj.gameObject.GetComponentInParent<HealthController> ().Damage (10);
-				if (obj.gameObject.GetComponentInParent<HealthController> ().GetHP () <= 0) {
-					Instantiate(healBall, obj.transform.position , obj.transform.rotation);
-					Destroy (obj.gameObject);
+		if (!playerCtrl.dialogRunning) {
+			if (shooter == "Player") {
+				if (obj.gameObject.tag == "Bot") {
+					obj.gameObject.GetComponentInParent<HealthController> ().Damage (10);
+					if (obj.gameObject.GetComponentInParent<HealthController> ().GetHP () <= 0) {
+						Instantiate (healBall, obj.transform.position, obj.transform.rotation);
+						Destroy (obj.gameObject);
+					}
+				}
+			} else if (shooter == "Bot") {
+				if (obj.gameObject.tag == "Player") {
+					obj.gameObject.GetComponentInParent<HealthController> ().Damage (10);
 				}
 			}
 		}
-		else if (shooter == "Bot") {
-			if (obj.gameObject.tag == "Player") {
-				obj.gameObject.GetComponentInParent<HealthController> ().Damage (10);
-			}
+		if (obj.gameObject.tag != "Detecter") {
+			Destroy (this.gameObject);
 		}
-		Destroy (this.gameObject);
+
 	}
 }

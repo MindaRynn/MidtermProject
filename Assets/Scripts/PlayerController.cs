@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour {
 	public GameObject faderObj;
 	private Fader fader;
 	private Vector3 pos;
+	private bool killed;
 
 	// Use this for initialization
 	void Awake () {
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour {
 			canMove = true;
 		}
 		transform.position = pos;
+		killed = false;
 	}
 
 	public void Walk () {
@@ -181,15 +183,24 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	private void PlayerFellOff () {
+		if (transform.position.y <= -5f) {
+			health.Damage (1000);
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
-		if (health.HasDied ()) {
+
+		PlayerFellOff ();
+
+		if (health.HasDied () && !killed) {
 			Debug.Log ("YOU ARE DEAD!!!");
 			PlayerPrefs.DeleteKey ("PlayerPos");
 			fader.gameObject.SetActive (true);
 			fader.FadeOutAndLoad ("GameOver");
 			canMove = false;
-			health.Heal (100);
+			killed = true;
 			return;
 		}
 
