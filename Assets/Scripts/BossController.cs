@@ -176,7 +176,7 @@ public class BossController : MonoBehaviour {
 			}
 			if (bulletDelay <= 0) {
 				Shoot ();
-				bulletDelay = 20;
+				bulletDelay = 40;
 			}
 			else {
 				bulletDelay--;

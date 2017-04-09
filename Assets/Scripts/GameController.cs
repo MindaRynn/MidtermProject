@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Awake () {
-//		PlayerPrefs.SetString ("PlayerPos", 0 + "," + 0.7);		
+//		PlayerPrefs.SetString ("PlayerPos", 0 + "," + 0.7);
 //		PlayerPrefs.SetInt ("data1", 0);
 //		PlayerPrefs.SetInt ("data2", 0);
 //		PlayerPrefs.SetInt ("data3", 0);
