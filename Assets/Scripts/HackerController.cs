@@ -13,6 +13,7 @@ public class HackerController : MonoBehaviour {
 	public GameObject explosion;
 	public GameObject faderObj;
 	private Fader fader;
+	private bool isDead;
 
 	//	public Boundary boundary;
 	public Vector3 up = new Vector3(0,1.0f,0);
@@ -21,6 +22,7 @@ public class HackerController : MonoBehaviour {
 
 	void Awake () {
 		fader = faderObj.GetComponent<Fader> ();
+		isDead = false;
 	}
 
 	void FixedUpdate () {
@@ -32,7 +34,7 @@ public class HackerController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider other){
-		if (other.tag == "eShot") {
+		if (other.tag == "eShot" && !isDead) {
 			Destroy (other.gameObject);
 			gameObject.GetComponent<Renderer>().enabled = false;
 			Instantiate (explosion, transform.position, transform.rotation);
@@ -40,7 +42,7 @@ public class HackerController : MonoBehaviour {
 			PlayerPrefs.SetInt ("numHacking", 0);
 			fader.gameObject.SetActive (true);
 			fader.FadeOutAndLoad ("MainStage1");
-//			Application.LoadLevel (1);
+			isDead = true;
 		}
 	}
 

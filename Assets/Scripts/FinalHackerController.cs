@@ -11,6 +11,7 @@ public class FinalHackerController : MonoBehaviour {
 	public float speed;
 	private float fireRate = 0.1f;
 	private float nextFire;
+	private bool isDead;
 
 	//	public Boundary boundary;
 	public Vector3 up = new Vector3(0,1.0f,0);
@@ -23,12 +24,14 @@ public class FinalHackerController : MonoBehaviour {
 
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 		GetComponent<Rigidbody> ().velocity = movement * speed;
+		isDead = false;
 	}
 
 	void OnTriggerEnter (Collider other){
-		if (other.tag == "eShot" || other.tag == "EnemyBolt") {
+		if ((other.tag == "eShot" || other.tag == "EnemyBolt")&&!isDead) {
 			Destroy (other.gameObject);
 			transform.position = new Vector3 (0, 1.5f, -31.74f);
+			isDead = true;
 		}
 	}
 
