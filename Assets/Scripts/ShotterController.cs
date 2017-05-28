@@ -5,14 +5,19 @@ using UnityEngine;
 public class ShotterController : MonoBehaviour {
 	public GameObject shot;
 	public Transform spotSpawn;
-	public float fireRate;
+	private float fireRate = 0.1f;
+	private float fireCounter;
 	private float nextFire;
 
+	void Start() {
+		fireCounter = fireRate;
+	}
 	void Update () {
-		if (Time.time > nextFire)
+		fireCounter -= Time.deltaTime;
+		if (fireCounter < 0)
 		{
-			nextFire += fireRate;
 			Instantiate(shot, spotSpawn.position, spotSpawn.rotation);
+			fireCounter = fireRate;
 		}
 	}
 }

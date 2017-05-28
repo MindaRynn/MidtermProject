@@ -10,6 +10,7 @@ public class FinalHackerController : MonoBehaviour {
 	public Transform spotSpawn;
 	public float speed;
 	private float fireRate = 0.1f;
+	private float fireCounter;
 	private float nextFire;
 	private bool isDead;
 
@@ -17,6 +18,10 @@ public class FinalHackerController : MonoBehaviour {
 	public Vector3 up = new Vector3(0,1.0f,0);
 	public Vector3 down = new Vector3(0,-1.0f,0);
 	float lockPos = 0;
+
+	void Start() {
+		fireCounter = fireRate;
+	}
 
 	void FixedUpdate () {
 		float moveHorizontal = Input.GetAxis ("Horizontal");
@@ -37,10 +42,12 @@ public class FinalHackerController : MonoBehaviour {
 
 	void Update () {
 		transform.rotation = Quaternion.Euler(lockPos, transform.rotation.eulerAngles.y, lockPos);
-		if (Time.time > nextFire)
+
+		fireCounter -= Time.deltaTime;
+		if (fireCounter < 0)
 		{
-			nextFire += fireRate;
 			Instantiate(shot, spotSpawn.position, spotSpawn.rotation);
+			fireCounter = fireRate;
 		}
 
 		Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);

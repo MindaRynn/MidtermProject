@@ -1,15 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerController.cs">
     <Files>
-      <File FileName="Assets/Scripts/GameController.cs" Line="38" Column="18" />
-      <File FileName="Assets/ServerHackingController.cs" Line="44" Column="21" />
-      <File FileName="Assets/Scripts/MiniGame2Controller.cs" Line="61" Column="3" />
-      <File FileName="Assets/Scripts/CPUcontroller.cs" Line="13" Column="19" />
+      <File FileName="Assets/Scripts/ShotterController.cs" Line="8" Column="30" />
       <File FileName="Assets/Scripts/FinalHackerController.cs" Line="12" Column="30" />
+      <File FileName="Assets/Scripts/CPUcontroller.cs" Line="8" Column="30" />
       <File FileName="Assets/Scripts/HackerController.cs" Line="11" Column="30" />
-      <File FileName="Assets/Scripts/MiniGame3Controller.cs" Line="50" Column="4" />
-      <File FileName="Assets/ServerShuter.cs" Line="49" Column="38" />
+      <File FileName="Assets/Scripts/GameController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="204" Column="7" />
+      <File FileName="Assets/ServerShuter.cs" Line="49" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

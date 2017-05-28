@@ -9,6 +9,7 @@ public class HackerController : MonoBehaviour {
 	public Transform spotSpawn;
 	public float speed;
 	private float fireRate = 0.1f;
+	private float fireCounter;
 	private float nextFire;
 	public GameObject explosion;
 	public GameObject faderObj;
@@ -23,6 +24,7 @@ public class HackerController : MonoBehaviour {
 	void Awake () {
 		fader = faderObj.GetComponent<Fader> ();
 		isDead = false;
+		fireCounter = fireRate;
 	}
 
 	void FixedUpdate () {
@@ -48,10 +50,12 @@ public class HackerController : MonoBehaviour {
 
 	void Update () {
 		transform.rotation = Quaternion.Euler(lockPos, transform.rotation.eulerAngles.y, lockPos);
-		if (Time.time > nextFire)
+
+		fireCounter -= Time.deltaTime;
+		if (fireCounter < 0)
 		{
-			nextFire += fireRate;
 			Instantiate(shot, spotSpawn.position, spotSpawn.rotation);
+			fireCounter = fireRate;
 		}
 
 		Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
